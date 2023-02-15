@@ -5,4 +5,7 @@ class MyRoutes {
   static String signUp = '/signUp';
   static String waiting = '/waiting';
  static String resetpassword = '/resetpassword';
+ static String otpVerification= '/otpVerification';
+ 
+
 }

@@ -2,14 +2,14 @@ import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:learnerapp/Utilities/routes.dart';
 
-class ForgotPassword extends StatefulWidget {
-  const ForgotPassword({Key? key}) : super(key: key);
+class OtpVerification extends StatefulWidget {
+  const OtpVerification({Key? key}) : super(key: key);
 
   @override
-  State<ForgotPassword> createState() => _LoginScreenState();
+  State<OtpVerification> createState() => _LoginScreenState();
 }
 
-class _LoginScreenState extends State<ForgotPassword> {
+class _LoginScreenState extends State<OtpVerification> {
   bool _isObscure = true;
 
   @override
@@ -50,7 +50,7 @@ class _LoginScreenState extends State<ForgotPassword> {
                 ),
                 AnimatedTextKit(
                   animatedTexts: [
-                    TypewriterAnimatedText('Forgot Password!',
+                    TypewriterAnimatedText('OTP VERIFICATION!',
                         textStyle: const TextStyle(
                           color: Colors.black,
                           fontSize: 30,
@@ -73,7 +73,11 @@ class _LoginScreenState extends State<ForgotPassword> {
                 ),
                 Container(
                   child: Text(
-                      'Enter your email address to reset \n the  password'),
+                      'We just send you 4 digits code to your email'),
+                ),
+                  Container(
+                  child: Text(
+                      'example@example.com',style: TextStyle(fontWeight: FontWeight.bold),),
                 ),
                 SizedBox(
                   height: 40,

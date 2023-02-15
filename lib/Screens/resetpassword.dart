@@ -20,9 +20,11 @@ class _LoginScreenState extends State<ResetPassword> {
         child: SingleChildScrollView(
           child: Center(
             child: Column(
+              
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
+                       const SizedBox(height: 20,),
                 Row(
                   children: [
                     SizedBox(
@@ -77,7 +79,7 @@ class _LoginScreenState extends State<ResetPassword> {
                   isRepeatingAnimation: true,
                   totalRepeatCount: 2,
                 ),
-              
+              SizedBox(height: 20,),
                 Padding(
                   padding: const EdgeInsets.symmetric(
                     vertical: 16,
@@ -114,7 +116,7 @@ class _LoginScreenState extends State<ResetPassword> {
                       '(Enter a 8 or more characters long password)'),
                 ),
                 SizedBox(
-                  height: 10,
+                  height: 20,
                 ),
                  
    TextField(
@@ -161,28 +163,7 @@ class _LoginScreenState extends State<ResetPassword> {
                           ),
                         ),
                       ),
-                      Row(
-                        children: [
-                          const Text('Don\'t have an account?'),
-                          TextButton(
-                            onPressed: (() {
-                              Navigator.pushNamed(
-                                context,
-                                MyRoutes.signUp,
-                              );
-                            }),
-                            child: const Text(
-                              'Resend Code',
-                              style: TextStyle(
-                                color: Color.fromARGB(255, 12, 114, 14),
-                                fontSize: 15,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ),
-                        ],
-                        mainAxisAlignment: MainAxisAlignment.center,
-                      ),
+                   
                     ],
                   ),
                 ),

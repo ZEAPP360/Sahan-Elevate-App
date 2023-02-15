@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:learnerapp/Screens/forgot_password.dart';
 import 'package:learnerapp/Screens/home_screen.dart';
 import 'package:learnerapp/Screens/login_screen.dart';
+import 'package:learnerapp/Screens/otp.dart';
+import 'package:learnerapp/Screens/otpverification.dart';
 import 'package:learnerapp/Screens/resetpassword.dart';
 import 'package:learnerapp/Screens/signup.dart';
 
@@ -27,7 +29,8 @@ class AuthApp extends StatelessWidget {
         MyRoutes.signUp: (context) => SignUp(),
         MyRoutes.forgotPassword: (context) => ForgotPassword(),
         MyRoutes.waiting:(context) => Waiting(),
-        MyRoutes.resetpassword:(context) => ResetPassword()
+        MyRoutes.resetpassword:(context) => ResetPassword(),
+         MyRoutes.otpVerification:(context) => Otp()
       },
     );
   }

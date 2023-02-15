@@ -22,9 +22,10 @@ class _LoginScreenState extends State<LoginScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
+                const SizedBox(height: 20,),
                 Row(
                   children: [
-                    SizedBox(
+                    const SizedBox(
                       width: 20.0,
                     ),
                     Container(
@@ -32,11 +33,11 @@ class _LoginScreenState extends State<LoginScreen> {
                       child: MaterialButton(
                         minWidth: 2,
                         shape: const CircleBorder(),
-                        color: Color.fromARGB(255, 12, 114, 14),
+                        color: const Color.fromARGB(255, 12, 114, 14),
                         padding: const EdgeInsets.all(20),
                         onPressed: () {},
-                        child: Center(
-                          child: const Icon(
+                        child: const Center(
+                          child: Icon(
                             Icons.arrow_back,
                             size: 20,
                             color: Colors.white,
@@ -44,7 +45,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 80.0,
                     ),
                     Image.asset(
@@ -53,7 +54,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 40,
                 ),
                 AnimatedTextKit(
@@ -76,7 +77,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   isRepeatingAnimation: true,
                   totalRepeatCount: 2,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 40,
                 ),
                 Padding(
@@ -105,7 +106,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               borderRadius: BorderRadius.circular(15),
                             )),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20.0,
                       ),
                       TextField(
@@ -117,7 +118,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     icon: Icon(
                       
                         _isObscure ? Icons.visibility : Icons.visibility_off
-                        , color: Color.fromARGB(255, 3, 52, 4)
+                        , color: const Color.fromARGB(255, 3, 52, 4)
                         ),
                     onPressed: () {
                       setState(() {
@@ -146,7 +147,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                       Row(
                         children: [
-                          SizedBox(
+                          const SizedBox(
                             width: 10.0,
                           ),
                           TextButton(
@@ -169,7 +170,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           alignment: Alignment.center,
                           width: 400,
                           height: 50,
-                          child: Text(
+                          child: const Text(
                             'Sign In',
                             style: TextStyle(
                               fontSize: 18,
@@ -177,7 +178,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
                           ),
                           decoration: BoxDecoration(
-                            color: Color.fromARGB(255, 3, 52, 4),
+                            color: const Color.fromARGB(255, 3, 52, 4),
                             borderRadius: BorderRadius.circular(25),
                           ),
                         ),
@@ -189,7 +190,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             onPressed: (() {
                               Navigator.pushNamed(
                                 context,
-                                MyRoutes.signUp,
+                                MyRoutes.otpVerification,
                               );
                             }),
                             child: const Text(
