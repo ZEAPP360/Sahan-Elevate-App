@@ -14,71 +14,77 @@ class _LoginScreenState extends State<ResetPassword> {
 
   @override
   Widget build(BuildContext context) {
-    return Material(
-      color: Colors.white,
-      child: SafeArea(
-        child: SingleChildScrollView(
-          child: Center(
-            child: Column(
-              
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                       const SizedBox(height: 20,),
-                Row(
-                  children: [
-                    SizedBox(
-                      width: 20.0,
-                    ),
-                    Container(
-                      width: 40.0,
-                      child: MaterialButton(
+    return Scaffold(
+ appBar: AppBar(
+        leading: Padding(
+          padding: const EdgeInsets.only(top: 30),
+          child: MaterialButton(
                         minWidth: 2,
                         shape: const CircleBorder(),
-                        color: Color.fromARGB(255, 12, 114, 14),
-                        padding: const EdgeInsets.all(20),
-                        onPressed: () {},
+            color:Color(0xFF045a4f),
+                        padding: const EdgeInsets.all(5),
+                        onPressed: () {
+
+                            Navigator.pushNamed(
+                                context,
+                                MyRoutes.waiting,
+                              );
+                        },
                         child: Center(
-                          child: const Icon(
+                          child: Icon(
                             Icons.arrow_back,
                             size: 20,
                             color: Colors.white,
                           ),
                         ),
                       ),
-                    ),
-                    SizedBox(
-                      width: 80.0,
-                    ),
-                    Image.asset(
-                      'images/elevatelogo.png',
-                      fit: BoxFit.cover,
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  height: 40,
-                ),
-                AnimatedTextKit(
-                  animatedTexts: [
-                    TypewriterAnimatedText('Reset Password!',
-                        textStyle: const TextStyle(
+        ),
+                
+          title: Padding(
+            padding: const EdgeInsets.only(
+              top: 30,
+              right: 20),
+            child: Image.asset(
+              'images/elevatelogo.png',
+              height: 230,
+              width: 200,
+            ),
+          ),
+          centerTitle: true,
+          elevation: 0,
+          backgroundColor: Colors.white,
+          // actions: [
+          //   Padding(
+          //     padding: const EdgeInsets.only(right: 48),
+          //     child: Icon(
+          //       Icons.menu,
+          //       size: 40,
+          //       color: const Color(0xFF045a4f),
+          //     ),
+          //   ),
+          // ],
+        ),
+      backgroundColor: Colors.white,
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Center(
+            child: Column(
+               mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+         SizedBox(height: 30,),
+                // SizedBox(
+                //   height: 40,
+                // ),
+                Text('Reset Password',
+                style: TextStyle(
                           color: Colors.black,
-                          fontSize: 30,
-                          fontStyle: FontStyle.italic,
-                          fontFamily: 'Times New Roman',
+                          fontSize: 28.26,
+                          // fontStyle: FontStyle.italic,
+                          // fontFamily: 'Times New Roman',
                           fontWeight: FontWeight.w500,
-                        ),
-                        speed: const Duration(
-                          milliseconds: 450,
-                        )),
-                  ],
-                  onTap: () {
-                    debugPrint("Welcome back!");
-                  },
-                  isRepeatingAnimation: true,
-                  totalRepeatCount: 2,
-                ),
+                ),),
+              
               SizedBox(height: 20,),
                 Padding(
                   padding: const EdgeInsets.symmetric(
@@ -97,14 +103,14 @@ class _LoginScreenState extends State<ResetPassword> {
                             enabledBorder: OutlineInputBorder(
                               borderSide: const BorderSide(
                                   width: 3,
-                                  color: Color.fromARGB(255, 188, 191, 188)),
+                                   color:Color(0xFFDFE9E8),),
                               borderRadius: BorderRadius.circular(15),
                             ),
                             // Set border for focused state
                             focusedBorder: OutlineInputBorder(
                               borderSide: const BorderSide(
                                   width: 3,
-                                  color: Color.fromARGB(255, 188, 191, 188)),
+                                   color:Color(0xFFDFE9E8),),
                               borderRadius: BorderRadius.circular(15),
                             )
                             
@@ -113,7 +119,11 @@ class _LoginScreenState extends State<ResetPassword> {
                       SizedBox(height: 10,),
                 Container(
                   child: Text(
-                      '(Enter a 8 or more characters long password)'),
+                      '(Enter a 8 or more characters long password)',style: TextStyle(fontSize: 16,
+                         color: Color(0xffA5AABB),
+                      ),
+                      
+                      ),
                 ),
                 SizedBox(
                   height: 20,
@@ -128,14 +138,14 @@ class _LoginScreenState extends State<ResetPassword> {
                             enabledBorder: OutlineInputBorder(
                               borderSide: const BorderSide(
                                   width: 3,
-                                  color: Color.fromARGB(255, 188, 191, 188)),
+                                  color:Color(0xFFDFE9E8),),
                               borderRadius: BorderRadius.circular(15),
                             ),
                             // Set border for focused state
                             focusedBorder: OutlineInputBorder(
                               borderSide: const BorderSide(
                                   width: 3,
-                                  color: Color.fromARGB(255, 188, 191, 188)),
+                                 color:Color(0xFFDFE9E8),),
                               borderRadius: BorderRadius.circular(15),
                             )
                             
@@ -144,7 +154,7 @@ class _LoginScreenState extends State<ResetPassword> {
                       SizedBox(height: 20.0,),
                       TextButton(
                         onPressed: (() {
-                          Navigator.pushNamed(context, MyRoutes.waiting);
+                          Navigator.pushNamed(context, MyRoutes.otpVerification);
                         }),
                         child: Container(
                           alignment: Alignment.center,
@@ -158,7 +168,7 @@ class _LoginScreenState extends State<ResetPassword> {
                             ),
                           ),
                           decoration: BoxDecoration(
-                            color: Color.fromARGB(255, 3, 52, 4),
+                               color:Color(0xFF045a4f),
                             borderRadius: BorderRadius.circular(25),
                           ),
                         ),

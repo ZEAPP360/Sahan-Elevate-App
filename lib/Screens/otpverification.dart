@@ -14,70 +14,117 @@ class _LoginScreenState extends State<OtpVerification> {
 
   @override
   Widget build(BuildContext context) {
-    return Material(
-      color: Colors.white,
-      child: SafeArea(
+    return Scaffold(
+ appBar: AppBar(
+        leading: Padding(
+          padding: const EdgeInsets.only(top: 30),
+          child: MaterialButton(
+                        minWidth: 2,
+                        shape: const CircleBorder(),
+            color:Color(0xFF045a4f),
+                        padding: const EdgeInsets.all(5),
+                        onPressed: () {
+
+                            Navigator.pushNamed(
+                                context,
+                                MyRoutes.waiting,
+                              );
+                        },
+                        child: Center(
+                          child: Icon(
+                            Icons.arrow_back,
+                            size: 20,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+        ),
+                
+          title: Padding(
+            padding: const EdgeInsets.only(
+              top: 30,
+              right: 20),
+            child: Image.asset(
+              'images/elevatelogo.png',
+              height: 230,
+              width: 200,
+            ),
+          ),
+          centerTitle: true,
+          elevation: 0,
+          backgroundColor: Colors.white,
+          // actions: [
+          //   Padding(
+          //     padding: const EdgeInsets.only(right: 48),
+          //     child: Icon(
+          //       Icons.menu,
+          //       size: 40,
+          //       color: const Color(0xFF045a4f),
+          //     ),
+          //   ),
+          // ],
+        ),
+      backgroundColor: Colors.white,
+    body: SafeArea(
         child: SingleChildScrollView(
           child: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                       const SizedBox(height: 20,),
+             SizedBox(height: 40,),
                 Row(
                   children: [
                     SizedBox(
-                      width: 20.0,
+                      width: 40.0,
                     ),
-                    Center(
-                      child: const Icon(
-                        Icons.arrow_back,
-                        size: 20,
-                       color: Color.fromARGB(255, 3, 52, 4),
+                    Text(
+                      'OTP VERIFICATION!',
+                      style: TextStyle(
+                        color: Colors.black,
+                              fontSize: 18.26,
+                        // fontStyle: FontStyle.italic,
+                        // fontFamily: 'Times New Roman',
+                        fontWeight: FontWeight.w500,
                       ),
                     ),
                     SizedBox(
-                      width: 80.0,
+                      width: 130,
                     ),
-                    Image.asset(
-                      'images/elevatelogo.png',
-                      fit: BoxFit.cover,
-                    ),
+                    Text(
+                      'Cancel',
+                      style: TextStyle(
+                        fontSize: 15,
+                        color: Color(0xFF045a4f),
+                      ),
+                    )
                   ],
                 ),
                 SizedBox(
-                  height: 40,
+                  height: 20,
                 ),
-                AnimatedTextKit(
-                  animatedTexts: [
-                    TypewriterAnimatedText('OTP VERIFICATION!',
-                        textStyle: const TextStyle(
-                          color: Colors.black,
-                          fontSize: 30,
-                          fontStyle: FontStyle.italic,
-                          fontFamily: 'Times New Roman',
-                          fontWeight: FontWeight.w500,
+                Row(
+                  children: [
+                    SizedBox(
+                      width: 40,
+                    ),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'We just send you 4 digits code to your email',
+                          style: TextStyle(
+                            color: Color(0xffA5AABB),
+                          ),
                         ),
-                        speed: const Duration(
-                          milliseconds: 450,
-                        )),
+                        Text(
+                          'example@example.com',
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                      ],
+                    ),
                   ],
-                  onTap: () {
-                    debugPrint("Welcome back!");
-                  },
-                  isRepeatingAnimation: true,
-                  totalRepeatCount: 2,
-                ),
-                SizedBox(
-                  height: 30,
-                ),
-                Container(
-                  child: Text(
-                      'We just send you 4 digits code to your email'),
-                ),
-                  Container(
-                  child: Text(
-                      'example@example.com',style: TextStyle(fontWeight: FontWeight.bold),),
                 ),
                 SizedBox(
                   height: 40,
@@ -90,27 +137,14 @@ class _LoginScreenState extends State<OtpVerification> {
                   child: Column(
                     children: [
                       // Note: Same code is applied for the TextFormField as well
-                      TextField(
-                        decoration: InputDecoration(
-                  
-                            hintText: 'Enter Your Email',
-                            labelText: 'Email',
-                            // Set border for enabled state (default)
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: const BorderSide(
-                                  width: 3,
-                                  color: Color.fromARGB(255, 188, 191, 188)),
-                              borderRadius: BorderRadius.circular(15),
-                            ),
-                            // Set border for focused state
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: const BorderSide(
-                                  width: 3,
-                                  color: Color.fromARGB(255, 188, 191, 188)),
-                              borderRadius: BorderRadius.circular(15),
-                            )
-                            
-                            ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          _textFieldOTP(first: true, last: false),
+                          _textFieldOTP(first: false, last: false),
+                          _textFieldOTP(first: false, last: false),
+                          _textFieldOTP(first: false, last: true),
+                        ],
                       ),
                       SizedBox(
                         height: 30,
@@ -118,21 +152,21 @@ class _LoginScreenState extends State<OtpVerification> {
 
                       TextButton(
                         onPressed: (() {
-                          Navigator.pushNamed(context, MyRoutes.waiting);
+                          Navigator.pushNamed(context, MyRoutes.answer);
                         }),
                         child: Container(
                           alignment: Alignment.center,
-                          width: 400,
+                          width: 500,
                           height: 50,
                           child: Text(
-                            'Send',
+                            'Continue',
                             style: TextStyle(
                               fontSize: 18,
                               color: Colors.white,
                             ),
                           ),
                           decoration: BoxDecoration(
-                            color: Color.fromARGB(255, 3, 52, 4),
+                            color: Color(0xFF045a4f),
                             borderRadius: BorderRadius.circular(25),
                           ),
                         ),
@@ -150,7 +184,7 @@ class _LoginScreenState extends State<OtpVerification> {
                             child: const Text(
                               'Resend Code',
                               style: TextStyle(
-                                color: Color.fromARGB(255, 12, 114, 14),
+                                color: Color(0xFF045a4f),
                                 fontSize: 15,
                                 fontWeight: FontWeight.bold,
                               ),
@@ -164,6 +198,47 @@ class _LoginScreenState extends State<OtpVerification> {
                 ),
               ],
             ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _textFieldOTP({bool? first, last}) {
+    return Container(
+      height: 65,
+      child: AspectRatio(
+        aspectRatio: 1.0,
+        child: TextField(
+          autofocus: true,
+          onChanged: (value) {
+            if (value.length == 1 && last == false) {
+              FocusScope.of(context).nextFocus();
+            }
+            if (value.length == 0 && first == false) {
+              FocusScope.of(context).previousFocus();
+            }
+          },
+          showCursor: false,
+          readOnly: false,
+          textAlign: TextAlign.center,
+          style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+          keyboardType: TextInputType.number,
+          maxLength: 1,
+          decoration: InputDecoration(
+            counter: Offstage(),
+            enabledBorder: OutlineInputBorder(
+                borderSide: BorderSide(
+                  width: 2,
+                  color: Color(0xFFDFE9E8),
+                ),
+                borderRadius: BorderRadius.circular(12)),
+            focusedBorder: OutlineInputBorder(
+                borderSide: BorderSide(
+                  width: 2,
+                  color: Color(0xFFDFE9E8),
+                ),
+                borderRadius: BorderRadius.circular(12)),
           ),
         ),
       ),

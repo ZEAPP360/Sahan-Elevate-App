@@ -2,14 +2,14 @@ import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:learnerapp/Utilities/routes.dart';
 
-class SignUp extends StatefulWidget {
-  const SignUp({Key? key}) : super(key: key);
+class MyProfile extends StatefulWidget {
+  const MyProfile({Key? key}) : super(key: key);
 
   @override
-  State<SignUp> createState() => _LoginScreenState();
+  State<MyProfile> createState() => _LoginScreenState();
 }
 
-class _LoginScreenState extends State<SignUp> {
+class _LoginScreenState extends State<MyProfile> {
   bool _isObscure = true;
   bool agree = false;
   bool Physics = false;
@@ -24,34 +24,12 @@ class _LoginScreenState extends State<SignUp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-       appBar: AppBar(
-        leading: Padding(
-          padding: const EdgeInsets.only(top: 30),
-          child: MaterialButton(
-                        minWidth: 2,
-                        shape: const CircleBorder(),
-            color:Color(0xFF045a4f),
-                        padding: const EdgeInsets.all(5),
-                        onPressed: () {
-
-                            Navigator.pushNamed(
-                                context,
-                                MyRoutes.waiting,
-                              );
-                        },
-                        child: Center(
-                          child: Icon(
-                            Icons.arrow_back,
-                            size: 20,
-                            color: Colors.white,
-                          ),
-                        ),
-                      ),
-        ),
+  appBar: AppBar(
+     
                 
           title: Padding(
             padding: const EdgeInsets.only(
-              top: 30,
+              top: 20,
               right: 20),
             child: Image.asset(
               'images/elevatelogo.png',
@@ -62,16 +40,16 @@ class _LoginScreenState extends State<SignUp> {
           centerTitle: true,
           elevation: 0,
           backgroundColor: Colors.white,
-          // actions: [
-          //   Padding(
-          //     padding: const EdgeInsets.only(right: 48),
-          //     child: Icon(
-          //       Icons.menu,
-          //       size: 40,
-          //       color: const Color(0xFF045a4f),
-          //     ),
-          //   ),
-          // ],
+          actions: [
+            Padding(
+              padding: const EdgeInsets.only(right: 48,top: 16),
+              child: Icon(
+                Icons.menu,
+                size: 40,
+                color: const Color(0xFF045a4f),
+              ),
+            ),
+          ],
         ),
       backgroundColor: Colors.white,
       body: SafeArea(
@@ -81,7 +59,31 @@ class _LoginScreenState extends State<SignUp> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-              
+
+                SizedBox(height: 20,),
+              Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+             SizedBox(width: 15,),
+             Container(
+        decoration: BoxDecoration(
+          border: Border(
+            bottom: BorderSide(
+              color: Color(0xff0b5e54),
+              width: 4
+
+            )
+          )
+        ),
+          child: Text(
+        "My Profile",
+        style: TextStyle(
+            fontSize: 21,
+            fontWeight: FontWeight.bold,
+            ),
+      ))
+              ],
+            ),
                 // Column(
                 //   children: [
                 //     SizedBox(width: 80,),
@@ -127,11 +129,13 @@ class _LoginScreenState extends State<SignUp> {
                 //     ),
                 //   ],
                 // ),
-SizedBox(height: 50,),
+
                 Container(
                   margin: const EdgeInsets.all(10),
                   child: Column(
+
                     children: [
+                    SizedBox(height: 40,),
                       Row(
                         children: [
                           SizedBox(
@@ -197,60 +201,42 @@ SizedBox(height: 50,),
                               borderRadius: BorderRadius.circular(15),
                             )),
                       ),
-                      const SizedBox(
-                        height: 20.0,
-                      ),
-                      Row(
-                        children: [
-                          SizedBox(
-                              width: MediaQuery.of(context).size.width * 0.01),
-                          const Text(
-                            'Password',
-                            style: TextStyle(fontWeight: FontWeight.bold),
-                          ),
-                        ],
-                      ),
-                      const SizedBox(
-                        height: 15,
-                      ),
-                      TextField(
-                        obscureText: _isObscure,
-                        decoration: InputDecoration(
-                            suffixIcon: IconButton(
-                                icon: Icon(
-                                    _isObscure
-                                        ? Icons.visibility
-                                        : Icons.visibility_off,
-                                    color: const Color.fromARGB(255, 3, 52, 4)),
-                                onPressed: () {
-                                  setState(() {
-                                    _isObscure = !_isObscure;
-                                  });
-                                }),
-                            hintText: 'Enter Your Password',
-                            labelText: 'Password',
-                            // Set border for enabled state (default)
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: const BorderSide(
-                                  width: 3,
-                                  color: Color.fromARGB(255, 188, 191, 188)),
-                              borderRadius: BorderRadius.circular(15),
-                            ),
-                            // Set border for focused state
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: const BorderSide(
-                                  width: 3,
-                                  color: Color.fromARGB(255, 188, 191, 188)),
-                              borderRadius: BorderRadius.circular(15),
-                            )),
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      Container(
-                        child: const Text(
-                            '(Enter a 8 or more characters long password)'),
-                      ),
+                   
+                      // const SizedBox(
+                      //   height: 15,
+                      // ),
+                      // TextField(
+                      //   obscureText: _isObscure,
+                      //   decoration: InputDecoration(
+                      //       suffixIcon: IconButton(
+                      //           icon: Icon(
+                      //               _isObscure
+                      //                   ? Icons.visibility
+                      //                   : Icons.visibility_off,
+                      //               color: const Color.fromARGB(255, 3, 52, 4)),
+                      //           onPressed: () {
+                      //             setState(() {
+                      //               _isObscure = !_isObscure;
+                      //             });
+                      //           }),
+                      //       hintText: 'Enter Your Password',
+                      //       labelText: 'Password',
+                      //       // Set border for enabled state (default)
+                      //       enabledBorder: OutlineInputBorder(
+                      //         borderSide: const BorderSide(
+                      //             width: 3,
+                      //             color: Color.fromARGB(255, 188, 191, 188)),
+                      //         borderRadius: BorderRadius.circular(15),
+                      //       ),
+                      //       // Set border for focused state
+                      //       focusedBorder: OutlineInputBorder(
+                      //         borderSide: const BorderSide(
+                      //             width: 3,
+                      //             color: Color.fromARGB(255, 188, 191, 188)),
+                      //         borderRadius: BorderRadius.circular(15),
+                      //       )),
+                      // ),
+                   
                       const SizedBox(
                         height: 50,
                       ),
@@ -363,40 +349,40 @@ SizedBox(height: 50,),
                       const SizedBox(
                         height: 10,
                       ),
-                      Row(
-                        children: [
-                          Material(
-                            child: Checkbox(
-                              activeColor: Colors.green,
-                              value: agree,
-                              onChanged: (value) {
-                                setState(() {
-                                  agree = value ?? false;
-                                });
-                              },
-                            ),
-                          ),
-                          const Text(
-                            'I have read and accept terms and conditions',
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 15),
-                            overflow: TextOverflow.ellipsis,
-                          )
-                        ],
-                      ),
+                      // Row(
+                      //   children: [
+                      //     Material(
+                      //       child: Checkbox(
+                      //         activeColor: Colors.green,
+                      //         value: agree,
+                      //         onChanged: (value) {
+                      //           setState(() {
+                      //             agree = value ?? false;
+                      //           });
+                      //         },
+                      //       ),
+                      //     ),
+                      //     const Text(
+                      //       'I have read and accept terms and conditions',
+                      //       style: TextStyle(
+                      //           fontWeight: FontWeight.bold, fontSize: 15),
+                      //       overflow: TextOverflow.ellipsis,
+                      //     )
+                      //   ],
+                      // ),
                       const SizedBox(
                         height: 20,
                       ),
                       TextButton(
                         onPressed: (() {
-                          Navigator.pushNamed(context, MyRoutes.myprofile);
+                          Navigator.pushNamed(context, MyRoutes.profile2);
                         }),
                         child: Container(
                           alignment: Alignment.center,
                           width: 400,
                           height: 50,
                           child: const Text(
-                            'Sign Up',
+                            'Save',
                             style: TextStyle(
                               fontSize: 18,
                               color: Colors.white,
@@ -408,28 +394,28 @@ SizedBox(height: 50,),
                           ),
                         ),
                       ),
-                      Row(
-                        children: [
-                          const Text('Don\'t have an account?'),
-                          TextButton(
-                            onPressed: (() {
-                              Navigator.pushNamed(
-                                context,
-                                MyRoutes.waiting,
-                              );
-                            }),
-                            child: const Text(
-                              'Sign in',
-                              style: TextStyle(
-                         color: Colors.black,
-                                fontSize: 15,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ),
-                        ],
-                        mainAxisAlignment: MainAxisAlignment.center,
-                      ),
+                      // Row(
+                      //   children: [
+                      //     const Text('Don\'t have an account?'),
+                      //     TextButton(
+                      //       onPressed: (() {
+                      //         Navigator.pushNamed(
+                      //           context,
+                      //           MyRoutes.otpVerification,
+                      //         );
+                      //       }),
+                      //       child: const Text(
+                      //         'Sign Up here',
+                      //         style: TextStyle(
+                      //           color: Color.fromARGB(255, 12, 114, 14),
+                      //           fontSize: 15,
+                      //           fontWeight: FontWeight.bold,
+                      //         ),
+                      //       ),
+                      //     ),
+                      //   ],
+                      //   mainAxisAlignment: MainAxisAlignment.center,
+                      // ),
                     ],
                   ),
                 ),

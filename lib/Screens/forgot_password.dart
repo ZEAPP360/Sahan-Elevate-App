@@ -14,66 +14,98 @@ class _LoginScreenState extends State<ForgotPassword> {
 
   @override
   Widget build(BuildContext context) {
-    return Material(
-      color: Colors.white,
-      child: SafeArea(
+    return Scaffold(
+    backgroundColor: Colors.white,
+ appBar: AppBar(
+        leading: Padding(
+          padding: const EdgeInsets.only(top: 30),
+          child: MaterialButton(
+                        minWidth: 2,
+                        shape: const CircleBorder(),
+            color:Color(0xFF045a4f),
+                        padding: const EdgeInsets.all(5),
+                        onPressed: () {
+
+                            Navigator.pushNamed(
+                                context,
+                                MyRoutes.waiting,
+                              );
+                        },
+                        child: Center(
+                          child: Icon(
+                            Icons.arrow_back,
+                            size: 20,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+        ),
+                
+          title: Padding(
+            padding: const EdgeInsets.only(
+              top: 30,
+              right: 20),
+            child: Image.asset(
+              'images/elevatelogo.png',
+              height: 230,
+              width: 200,
+            ),
+          ),
+          centerTitle: true,
+          elevation: 0,
+          backgroundColor: Colors.white,
+          // actions: [
+          //   Padding(
+          //     padding: const EdgeInsets.only(right: 48),
+          //     child: Icon(
+          //       Icons.menu,
+          //       size: 40,
+          //       color: const Color(0xFF045a4f),
+          //     ),
+          //   ),
+          // ],
+        ),
+      body: SafeArea(
         child: SingleChildScrollView(
           child: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                       const SizedBox(height: 20,),
-                Row(
-                  children: [
-                    SizedBox(
-                      width: 20.0,
-                    ),
-                    Center(
-                      child: const Icon(
-                        Icons.arrow_back,
-                        size: 20,
-                       color: Color.fromARGB(255, 3, 52, 4),
-                      ),
-                    ),
-                    SizedBox(
-                      width: 80.0,
-                    ),
-                    Image.asset(
-                      'images/elevatelogo.png',
-                      fit: BoxFit.cover,
-                    ),
-                  ],
+                SizedBox(
+                  height: 10,
                 ),
+             
                 SizedBox(
                   height: 40,
                 ),
-                AnimatedTextKit(
-                  animatedTexts: [
-                    TypewriterAnimatedText('Forgot Password!',
-                        textStyle: const TextStyle(
-                          color: Colors.black,
-                          fontSize: 30,
-                          fontStyle: FontStyle.italic,
-                          fontFamily: 'Times New Roman',
-                          fontWeight: FontWeight.w500,
-                        ),
-                        speed: const Duration(
-                          milliseconds: 450,
-                        )),
-                  ],
-                  onTap: () {
-                    debugPrint("Welcome back!");
-                  },
-                  isRepeatingAnimation: true,
-                  totalRepeatCount: 2,
+                Text(
+                  'Forgot Password',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 28.26,
+                    // fontStyle: FontStyle.italic,
+                    // fontFamily: 'Times New Roman',
+                    fontWeight: FontWeight.w500,
+                  ),
                 ),
                 SizedBox(
                   height: 30,
                 ),
                 Container(
                   child: Text(
-                      'Enter your email address to reset \n the  password'),
+                    'Enter your email address to reset the  ',
+                    style: TextStyle(color: Color(0xffA5AABB), fontSize: 20),
+                  ),
+                ),
+                Container(
+                  child: Text(
+                    'password',
+                    style: TextStyle(
+                      fontSize: 20,
+                      color: Colors.grey,
+                    ),
+                  ),
                 ),
                 SizedBox(
                   height: 40,
@@ -88,25 +120,24 @@ class _LoginScreenState extends State<ForgotPassword> {
                       // Note: Same code is applied for the TextFormField as well
                       TextField(
                         decoration: InputDecoration(
-                  
                             hintText: 'Enter Your Email',
                             labelText: 'Email',
                             // Set border for enabled state (default)
                             enabledBorder: OutlineInputBorder(
                               borderSide: const BorderSide(
-                                  width: 3,
-                                  color: Color.fromARGB(255, 188, 191, 188)),
+                                width: 3,
+                                color: Color(0xFFDFE9E8),
+                              ),
                               borderRadius: BorderRadius.circular(15),
                             ),
                             // Set border for focused state
                             focusedBorder: OutlineInputBorder(
                               borderSide: const BorderSide(
-                                  width: 3,
-                                  color: Color.fromARGB(255, 188, 191, 188)),
+                                width: 3,
+                                color: Color(0xFFDFE9E8),
+                              ),
                               borderRadius: BorderRadius.circular(15),
-                            )
-                            
-                            ),
+                            )),
                       ),
                       SizedBox(
                         height: 30,
@@ -128,14 +159,14 @@ class _LoginScreenState extends State<ForgotPassword> {
                             ),
                           ),
                           decoration: BoxDecoration(
-                            color: Color.fromARGB(255, 3, 52, 4),
+                            color: Color(0xFF045a4f),
                             borderRadius: BorderRadius.circular(25),
                           ),
                         ),
                       ),
                       Row(
                         children: [
-                          const Text('Don\'t have an account?'),
+                          const Text('Don\'t recieve the Code ?'),
                           TextButton(
                             onPressed: (() {
                               Navigator.pushNamed(
@@ -146,7 +177,7 @@ class _LoginScreenState extends State<ForgotPassword> {
                             child: const Text(
                               'Resend Code',
                               style: TextStyle(
-                                color: Color.fromARGB(255, 12, 114, 14),
+                                color: Color(0xFF045a4f),
                                 fontSize: 15,
                                 fontWeight: FontWeight.bold,
                               ),
