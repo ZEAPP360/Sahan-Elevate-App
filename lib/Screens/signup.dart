@@ -1,6 +1,12 @@
+import 'dart:convert';
+
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:learnerapp/Utilities/routes.dart';
+import 'package:learnerapp/Utilities/routes.dart';
+import 'package:http/http.dart' as http;
+
+import '../Services/signup_api.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({Key? key}) : super(key: key);
@@ -16,63 +22,90 @@ class _LoginScreenState extends State<SignUp> {
   bool Chemistry = false;
   bool Biology = false;
   bool Maths = false;
-
+  final name = TextEditingController();
+  final email = TextEditingController();
+  final password = TextEditingController();
+  // final name = TextEditingController();
   // This function is triggered when the button is clicked
   void _doSomething() {
     // Do something
   }
+  voidinitState() {
+    getStatus();
+  }
+
+  Future<Register> getStatus() async {
+    var response1 = await http.post(
+        Uri.parse(
+          'http://fca.systemiial.com/api/register',
+        ),
+        body: {
+          'name': name.text,
+          'email': email.text,
+          'password': password.text,
+          'password_confirmation': password.text,
+          'pref_ids': '1'
+        });
+
+    var client = http.Client();
+    print(response1.body);
+    var data = jsonDecode(response1.body.toString());
+    if (response1.statusCode == 200) {
+      return Register.fromJson(data);
+    } else {
+      return Register.fromJson(data);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-       appBar: AppBar(
+      appBar: AppBar(
         leading: Padding(
           padding: const EdgeInsets.only(top: 30),
           child: MaterialButton(
-                        minWidth: 2,
-                        shape: const CircleBorder(),
-            color:Color(0xFF045a4f),
-                        padding: const EdgeInsets.all(5),
-                        onPressed: () {
-
-                            Navigator.pushNamed(
-                                context,
-                                MyRoutes.waiting,
-                              );
-                        },
-                        child: Center(
-                          child: Icon(
-                            Icons.arrow_back,
-                            size: 20,
-                            color: Colors.white,
-                          ),
-                        ),
-                      ),
-        ),
-                
-          title: Padding(
-            padding: const EdgeInsets.only(
-              top: 30,
-              right: 20),
-            child: Image.asset(
-              'images/elevatelogo.png',
-              height: 230,
-              width: 200,
+            minWidth: 2,
+            shape: const CircleBorder(),
+            color: Color(0xFF045a4f),
+            padding: const EdgeInsets.all(5),
+            onPressed: () {
+              Navigator.pushNamed(
+                context,
+                MyRoutes.waiting,
+              );
+            },
+            child: Center(
+              child: Icon(
+                Icons.arrow_back,
+                size: 20,
+                color: Colors.white,
+              ),
             ),
           ),
-          centerTitle: true,
-          elevation: 0,
-          backgroundColor: Colors.white,
-          // actions: [
-          //   Padding(
-          //     padding: const EdgeInsets.only(right: 48),
-          //     child: Icon(
-          //       Icons.menu,
-          //       size: 40,
-          //       color: const Color(0xFF045a4f),
-          //     ),
-          //   ),
-          // ],
         ),
+
+        title: Padding(
+          padding: const EdgeInsets.only(top: 30, right: 20),
+          child: Image.asset(
+            'images/elevatelogo.png',
+            height: 230,
+            width: 200,
+          ),
+        ),
+        centerTitle: true,
+        elevation: 0,
+        backgroundColor: Colors.white,
+        // actions: [
+        //   Padding(
+        //     padding: const EdgeInsets.only(right: 48),
+        //     child: Icon(
+        //       Icons.menu,
+        //       size: 40,
+        //       color: const Color(0xFF045a4f),
+        //     ),
+        //   ),
+        // ],
+      ),
       backgroundColor: Colors.white,
       body: SafeArea(
         child: SingleChildScrollView(
@@ -81,7 +114,6 @@ class _LoginScreenState extends State<SignUp> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-              
                 // Column(
                 //   children: [
                 //     SizedBox(width: 80,),
@@ -127,7 +159,9 @@ class _LoginScreenState extends State<SignUp> {
                 //     ),
                 //   ],
                 // ),
-SizedBox(height: 50,),
+                SizedBox(
+                  height: 50,
+                ),
                 Container(
                   margin: const EdgeInsets.all(10),
                   child: Column(
@@ -146,6 +180,7 @@ SizedBox(height: 50,),
                         height: 15,
                       ),
                       TextField(
+                        controller: name,
                         decoration: InputDecoration(
                             hintText: 'Enter Your Name',
                             labelText: 'Name',
@@ -179,6 +214,7 @@ SizedBox(height: 50,),
                         height: 15,
                       ),
                       TextField(
+                        controller: email,
                         decoration: InputDecoration(
                             hintText: 'Your Email',
                             labelText: 'youremail@gmail.com',
@@ -214,6 +250,7 @@ SizedBox(height: 50,),
                         height: 15,
                       ),
                       TextField(
+                        controller: password,
                         obscureText: _isObscure,
                         decoration: InputDecoration(
                             suffixIcon: IconButton(
@@ -389,7 +426,7 @@ SizedBox(height: 50,),
                       ),
                       TextButton(
                         onPressed: (() {
-                          Navigator.pushNamed(context, MyRoutes.myprofile);
+                          getStatus();
                         }),
                         child: Container(
                           alignment: Alignment.center,
@@ -415,13 +452,13 @@ SizedBox(height: 50,),
                             onPressed: (() {
                               Navigator.pushNamed(
                                 context,
-                                MyRoutes.waiting,
+                                MyRoutes.loginScreen,
                               );
                             }),
                             child: const Text(
                               'Sign in',
                               style: TextStyle(
-                         color: Colors.black,
+                                color: Colors.black,
                                 fontSize: 15,
                                 fontWeight: FontWeight.bold,
                               ),

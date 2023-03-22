@@ -28,7 +28,7 @@ class _LoginScreenState extends State<ForgotPassword> {
 
                             Navigator.pushNamed(
                                 context,
-                                MyRoutes.waiting,
+                                MyRoutes.loginScreen,
                               );
                         },
                         child: Center(

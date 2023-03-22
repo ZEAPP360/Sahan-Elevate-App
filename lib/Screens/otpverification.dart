@@ -27,7 +27,7 @@ class _LoginScreenState extends State<OtpVerification> {
 
                             Navigator.pushNamed(
                                 context,
-                                MyRoutes.waiting,
+                                MyRoutes.resetpassword,
                               );
                         },
                         child: Center(
