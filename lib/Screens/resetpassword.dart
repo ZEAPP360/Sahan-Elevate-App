@@ -221,7 +221,6 @@ class _LoginScreenState extends State<ResetPassword> {
                                    print("This is Password: ${pass1.text}");
                                    print("This is Password Confirm: ${pass2.text}");
                                    print("Password doesnt match");
-                                   
                           return "Password does not match";
                               }
                               return null;
