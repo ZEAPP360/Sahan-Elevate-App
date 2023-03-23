@@ -24,11 +24,11 @@ class _LoginScreenState extends State<Waiting> {
             color:Color(0xFF045a4f),
                         padding: const EdgeInsets.all(5),
                         onPressed: () {
-
-                            Navigator.pushNamed(
-                                context,
-                                MyRoutes.waiting,
-                              );
+                         Navigator.pop(context);
+                            // Navigator.pushNamed(
+                            //     context,
+                            //     MyRoutes.waiting,
+                            //   );
                         },
                         child: Center(
                           child: Icon(

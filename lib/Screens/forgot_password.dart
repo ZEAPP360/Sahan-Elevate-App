@@ -11,6 +11,11 @@ class ForgotPassword extends StatefulWidget {
 
 class _LoginScreenState extends State<ForgotPassword> {
   bool _isObscure = true;
+  bool isValidForm = false;
+  bool visible = false;
+
+  final email = TextEditingController();
+  final _formKey= GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -66,130 +71,160 @@ class _LoginScreenState extends State<ForgotPassword> {
           // ],
         ),
       body: SafeArea(
-        child: SingleChildScrollView(
-          child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                SizedBox(
-                  height: 10,
-                ),
-             
-                SizedBox(
-                  height: 40,
-                ),
-                Text(
-                  'Forgot Password',
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 28.26,
-                    // fontStyle: FontStyle.italic,
-                    // fontFamily: 'Times New Roman',
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-                SizedBox(
-                  height: 30,
-                ),
-                Container(
-                  child: Text(
-                    'Enter your email address to reset the  ',
-                    style: TextStyle(color: Color(0xffA5AABB), fontSize: 20),
-                  ),
-                ),
-                Container(
-                  child: Text(
-                    'password',
-                    style: TextStyle(
-                      fontSize: 20,
-                      color: Colors.grey,
+        child: GestureDetector(
+      onTap: () {
+        FocusManager.instance.primaryFocus?.unfocus();
+      },
+          child: SingleChildScrollView(
+            child: Center(
+              child: Form(
+                key:_formKey,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    SizedBox(
+                      height: 10,
                     ),
-                  ),
-                ),
-                SizedBox(
-                  height: 40,
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(
-                    vertical: 16,
-                    horizontal: 32,
-                  ),
-                  child: Column(
-                    children: [
-                      // Note: Same code is applied for the TextFormField as well
-                      TextField(
-                        decoration: InputDecoration(
-                            hintText: 'Enter Your Email',
-                            labelText: 'Email',
-                            // Set border for enabled state (default)
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: const BorderSide(
-                                width: 3,
-                                color: Color(0xFFDFE9E8),
-                              ),
-                              borderRadius: BorderRadius.circular(15),
-                            ),
-                            // Set border for focused state
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: const BorderSide(
-                                width: 3,
-                                color: Color(0xFFDFE9E8),
-                              ),
-                              borderRadius: BorderRadius.circular(15),
-                            )),
+                 
+                    SizedBox(
+                      height: 40,
+                    ),
+                    Text(
+                      'Forgot Password',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 28.26,
+                        // fontStyle: FontStyle.italic,
+                        // fontFamily: 'Times New Roman',
+                        fontWeight: FontWeight.w500,
                       ),
-                      SizedBox(
-                        height: 30,
+                    ),
+                    SizedBox(
+                      height: 30,
+                    ),
+                    Container(
+                      child: Text(
+                        'Enter your email address to reset the  ',
+                        style: TextStyle(color: Color(0xffA5AABB), fontSize: 20),
                       ),
-
-                      TextButton(
-                        onPressed: (() {
-                          Navigator.pushNamed(context, MyRoutes.waiting);
-                        }),
-                        child: Container(
-                          alignment: Alignment.center,
-                          width: 400,
-                          height: 50,
-                          child: Text(
-                            'Send',
-                            style: TextStyle(
-                              fontSize: 18,
-                              color: Colors.white,
-                            ),
-                          ),
-                          decoration: BoxDecoration(
-                            color: Color(0xFF045a4f),
-                            borderRadius: BorderRadius.circular(25),
-                          ),
+                    ),
+                    Container(
+                      child: Text(
+                        'password',
+                        style: TextStyle(
+                          fontSize: 20,
+                          color: Colors.grey,
                         ),
                       ),
-                      Row(
+                    ),
+                    SizedBox(
+                      height: 40,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                        vertical: 16,
+                        horizontal: 32,
+                      ),
+                      child: Column(
                         children: [
-                          const Text('Don\'t recieve the Code ?'),
+                          // Note: Same code is applied for the TextFormField as well
+                          TextFormField(
+                            controller: email,
+                            decoration: InputDecoration(
+                                hintText: 'Enter Your Email',
+                                labelText: 'Email',
+                                // Set border for enabled state (default)
+                                enabledBorder: OutlineInputBorder(
+                                  borderSide: const BorderSide(
+                                    width: 3,
+                                    color: Color(0xFFDFE9E8),
+                                  ),
+                                  borderRadius: BorderRadius.circular(15),
+                                ),
+                                // Set border for focused state
+                                focusedBorder: OutlineInputBorder(
+                                  borderSide: const BorderSide(
+                                    width: 3,
+                                    color: Color(0xFFDFE9E8),
+                                  ),
+                                  borderRadius: BorderRadius.circular(15),
+                                )),
+                                 autovalidateMode:
+                                        AutovalidateMode.onUserInteraction,
+                                    validator: (inputValue) {
+                                if (inputValue!.isEmpty) {
+                                  return "Enter email";
+                                }
+                                return null;
+                              },
+                          ),
+                          const SizedBox(
+                            height: 30,
+                          ),
+              
                           TextButton(
-                            onPressed: (() {
-                              Navigator.pushNamed(
-                                context,
-                                MyRoutes.resetpassword,
-                              );
-                            }),
-                            child: const Text(
-                              'Resend Code',
-                              style: TextStyle(
+                             onPressed: () {
+                                    if (_formKey.currentState!.validate()) {
+                                      setState(() {
+                                        isValidForm = true;
+                                      });
+                                      Navigator.pushNamed(context, MyRoutes.waiting);
+                                    } else {
+                                      setState(() {
+                                        isValidForm = false;
+                                      });
+                                     
+                                    }
+                                  },
+                            // onPressed: (() {
+                            //   Navigator.pushNamed(context, MyRoutes.waiting);
+                            // }),
+                            child: Container(
+                              alignment: Alignment.center,
+                              width: 400,
+                              height: 50,
+                              child: Text(
+                                'Send',
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  color: Colors.white,
+                                ),
+                              ),
+                              decoration: BoxDecoration(
                                 color: Color(0xFF045a4f),
-                                fontSize: 15,
-                                fontWeight: FontWeight.bold,
+                                borderRadius: BorderRadius.circular(25),
                               ),
                             ),
                           ),
+                          Row(
+                            children: [
+                              const Text('Don\'t recieve the Code ?'),
+                              TextButton(
+                                onPressed: (() {
+                                  Navigator.pushNamed(
+                                    context,
+                                    MyRoutes.resetpassword,
+                                  );
+                                }),
+                                child: const Text(
+                                  'Resend Code',
+                                  style: TextStyle(
+                                    color: Color(0xFF045a4f),
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ),
+                            ],
+                            mainAxisAlignment: MainAxisAlignment.center,
+                          ),
                         ],
-                        mainAxisAlignment: MainAxisAlignment.center,
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
-              ],
+              ),
             ),
           ),
         ),
