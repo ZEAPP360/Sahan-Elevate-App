@@ -1,15 +1,24 @@
-import 'package:animated_text_kit/animated_text_kit.dart';
+import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:learnerapp/Utilities/routes.dart';
+import 'package:http/http.dart' as http;
+import '../Services/resetpass_api.dart';
 
+// ignore: must_be_immutable
 class ResetPassword extends StatefulWidget {
-  const ResetPassword({Key? key}) : super(key: key);
+  String? token5;
+
+  ResetPassword({this.token5, super.key});
 
   @override
-  State<ResetPassword> createState() => _LoginScreenState();
+  // ignore: no_logic_in_create_state
+  State<ResetPassword> createState() => _ResetPasswordState(token5);
 }
 
-class _LoginScreenState extends State<ResetPassword> {
+class _ResetPasswordState extends State<ResetPassword> {
+    String? token5;
+    _ResetPasswordState(this.token5);
+
   bool _isObscure = true;
   bool _isObscure2 = true;
   bool visible = false;
@@ -17,9 +26,39 @@ class _LoginScreenState extends State<ResetPassword> {
   String? password;
   String? confirmPassword;
 
+
   final pass1= TextEditingController();
   final pass2= TextEditingController();
   final _formkey= GlobalKey<FormState>();
+  
+ // ignore: annotate_overrides
+  void initState() {
+    super.initState();
+    getReset();
+  }
+
+  Future<Reset> getReset() async {
+    var params = {"token": "$token5"};
+    var response1 = await http.post(
+        Uri.parse(
+          'http://fca.systemiial.com/api/reset-password',
+        ),
+      body: {
+          'password': pass2.text,
+          'token': token5.toString(),
+        });
+
+    var client = http.Client();
+    print(response1.body);
+    var data = jsonDecode(response1.body.toString());
+  
+    print("Reset Password token recieved:   $token5");
+    if (response1.statusCode == 200) {
+      return Reset.fromJson(data);
+    } else {
+      return Reset.fromJson(data);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -34,10 +73,11 @@ class _LoginScreenState extends State<ResetPassword> {
                         padding: const EdgeInsets.all(5),
                         onPressed: () {
 
-                            Navigator.pushNamed(
-                                context,
-                                MyRoutes.waiting,
-                              );
+                            // Navigator.pushNamed(
+                            //     context,
+                            //     MyRoutes.waiting,
+                            //   );
+                            Navigator.pop(context);
                         },
                         child: Center(
                           child: Icon(
@@ -85,11 +125,11 @@ class _LoginScreenState extends State<ResetPassword> {
                  mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-           SizedBox(height: 30,),
+           const SizedBox(height: 30,),
                   // SizedBox(
                   //   height: 40,
                   // ),
-                  Text('Reset Password',
+                 const Text('Reset Password',
                   style: TextStyle(
                             color: Colors.black,
                             fontSize: 28.26,
@@ -98,7 +138,7 @@ class _LoginScreenState extends State<ResetPassword> {
                             fontWeight: FontWeight.w500,
                   ),),
                 
-                SizedBox(height: 20,),
+               const SizedBox(height: 20,),
                   Padding(
                     padding: const EdgeInsets.symmetric(
                       vertical: 16,
@@ -227,6 +267,9 @@ class _LoginScreenState extends State<ResetPassword> {
                             },
                           ),
                           const SizedBox(height: 20.0,),
+
+
+                          // Text("Tokennnn $token5"),
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                           TextButton(
@@ -235,7 +278,8 @@ class _LoginScreenState extends State<ResetPassword> {
                                       setState(() {
                                         isValidForm = true;
                                       });
-                                      Navigator.pushNamed(context, MyRoutes.otpVerification);
+                                      // Navigator.pushNamed(context, MyRoutes.otpVerification);
+                                      getReset();
                                     } else {
                                       setState(() {
                                         isValidForm = false;

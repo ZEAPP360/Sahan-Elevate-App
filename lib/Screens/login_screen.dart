@@ -4,11 +4,13 @@ import 'package:email_validator/email_validator.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:learnerapp/Screens/mainhomepage.dart';
+import 'package:learnerapp/Screens/resetpassword.dart';
 import 'package:learnerapp/Utilities/routes.dart';
 import 'package:http/http.dart' as http;
 import '../Services/login_api.dart';
 import 'homepage2.dart';
 import 'oldhome.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -24,8 +26,10 @@ class _LoginScreenState extends State<LoginScreen> {
   bool isValidForm = false;
   String? password;
   String? confirmpassword;
+  String? gtoken;
   
 
+  // ignore: annotate_overrides
   void initState() {
     super.initState();
     // getStatus();
@@ -55,11 +59,12 @@ class _LoginScreenState extends State<LoginScreen> {
     // print("This is My email ${data["data"]["email"]}");
     // print("This is My password ${mypass}");
 
-    // print("My token: ${data["access_token"]}");
+    print("My token: ${data["access_token"]}");
+    print("My email is: ${data["user"]["email"]}");
     response = response1.statusCode;
     print(data);
-    // print(data["access_token"]);
-  
+    // print("This is my email: ${data["email"]}");
+   
     print("Login Method Test Print");
 
     if (passwordController.text == '' || emailController.text == "") {
@@ -75,10 +80,15 @@ const snackBar = SnackBar(content: Text("Enter Correct Crendentials"));
       else if(data["access_token"]!=null){
         const snackBar = SnackBar(content: Text("Login success"));
           // ignore: use_build_context_synchronously
-         Navigator.push(
+        Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => MainHomePage2(token2: data["access_token"],)),
+        MaterialPageRoute(builder: (context) => MainHomePage2(token2: data["access_token"],)),    
       );
+      // // ignore: use_build_context_synchronously
+      // Navigator.push(
+      //   context,
+      //   MaterialPageRoute(builder: (context) => ResetPassword(token4: data["access_token"],)),
+      // );
       ScaffoldMessenger.of(context).showSnackBar(snackBar);
       }
       else{

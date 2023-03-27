@@ -74,7 +74,7 @@ class _LoginScreenState extends State<OtpVerification> {
               children: [
              SizedBox(height: 40,),
                 Row(
-                  children: [
+                  children: const [
                     SizedBox(
                       width: 40.0,
                     ),

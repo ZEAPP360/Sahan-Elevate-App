@@ -40,6 +40,7 @@ dependencies:
   intl: ^0.17.0
   flutter_vector_icons: ^1.0.0
   google_fonts: ^2.1.0
+  shared_preferences: ^2.0.18
 
   # STATE MANAGEMENT
   mobx: ^2.0.3

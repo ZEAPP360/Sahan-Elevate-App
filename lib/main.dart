@@ -15,6 +15,7 @@ void main() => runApp(const AuthApp());
 
 class AuthApp extends StatelessWidget {
   const AuthApp({Key? key}) : super(key: key);
+  
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +33,6 @@ class AuthApp extends StatelessWidget {
         MyRoutes.answer: (context) => MyAnswers(),
         MyRoutes.question: (context) => ShowAnswer() ,
         MyRoutes.forgotPassword: (context) => ForgotPassword() ,
-        MyRoutes.profile2: (context) => Profile2() ,
       },
     );
   }

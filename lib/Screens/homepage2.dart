@@ -2,7 +2,9 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:learnerapp/Screens/login_screen.dart';
+import 'package:learnerapp/Screens/profile.dart';
 import '../Services/allsub_api.dart';
+import 'myprofile2.dart';
 
 // ignore: must_be_immutable
 class MainHomePage2 extends StatefulWidget {
@@ -18,13 +20,12 @@ class MainHomePage2 extends StatefulWidget {
 class _MainHomePage2State extends State<MainHomePage2> {
   String? token2;
   _MainHomePage2State(this.token2);
-
   // ignore: annotate_overrides
   void initState() {
     super.initState();
     getdata();
   }
-
+ 
   Future<AllSubject> getdata() async {
     // ignore: unused_local_variable
     var params = {"token": "$token2"};
@@ -39,6 +40,8 @@ class _MainHomePage2State extends State<MainHomePage2> {
 
     print("Homepage token recieved:   $token2");
     print("MainHomePage Response:     ${response2.body}");
+
+  
     if (response2.statusCode == 200) {
       //  setState(() {
       //   Token3= data["access_token"];
@@ -115,7 +118,39 @@ class _MainHomePage2State extends State<MainHomePage2> {
                   const SizedBox(
                     height: 40,
                   ),
-                  button(context, "VIEW PROFILE", const Color.fromARGB(255, 155, 156, 156)),
+                  TextButton(
+    onPressed: () {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) =>  Profile2(token4:token2)),
+      );
+    },
+    child: Container(
+      alignment: Alignment.center,
+      width: 350,
+      height: 40,
+      // ignore: sort_child_properties_last
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Container(
+            margin: EdgeInsets.only(left: 50),
+            child: Text(
+              "View Profile",
+              style: TextStyle(
+                fontSize: 15,
+                color: Colors.white,
+              ),
+            ),
+          ),
+          Container(
+              margin: const EdgeInsets.only(right: 30),
+              child: const Icon(Icons.arrow_forward, size: 25, color: Colors.white))
+        ],
+      ),
+      decoration: BoxDecoration(color: const Color.fromARGB(255, 155, 156, 156),borderRadius: BorderRadius.circular(25), ),
+    ),
+                  ),
                   TextButton(
                     onPressed: () {
                       showDialog(
@@ -397,10 +432,10 @@ TextButton button(
 ) {
   return TextButton(
     onPressed: () {
-      // Navigator.push(
-      //   context,
-      //   MaterialPageRoute(builder: (context) => const ShowAnswer()),
-      // );
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) =>  Profile2()),
+      );
     },
     child: Container(
       alignment: Alignment.center,
