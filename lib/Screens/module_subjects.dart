@@ -72,6 +72,9 @@ class _ModuleByUserState extends State<ModuleByUser> {
                 width: 200,
               ),
             ),
+            leading: const BackButton(
+              color: Colors.black, // <-- SEE HERE
+            ),
             elevation: 0,
             backgroundColor: Colors.white,
             // actions: [

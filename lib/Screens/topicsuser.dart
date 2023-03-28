@@ -59,6 +59,10 @@ class _TopicByUserState extends State<TopicByUser> {
     return SafeArea(
       child: Scaffold(
           appBar: AppBar(
+
+            leading: const BackButton(
+    color: Colors.black, // <-- SEE HERE
+  ),
             centerTitle: true,
             automaticallyImplyLeading: false,
             iconTheme: const IconThemeData(

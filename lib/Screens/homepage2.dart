@@ -4,6 +4,7 @@ import 'package:http/http.dart' as http;
 import 'package:learnerapp/Screens/login_screen.dart';
 import 'package:learnerapp/Screens/profile.dart';
 import '../Services/allsub_api.dart';
+import '../Services/sub_user.dart';
 import 'module_subjects.dart';
 import 'myprofile2.dart';
 
@@ -27,12 +28,12 @@ class _MainHomePage2State extends State<MainHomePage2> {
     getdata();
   }
 
-  Future<AllSubject> getdata() async {
+  Future<SubByUser> getdata() async {
     // ignore: unused_local_variable
     var params = {"token": "$token2"};
     var response2 = await http.get(
       Uri.parse(
-        'http://fca.systemiial.com/api/get-all-subjects?token=$token2',
+        'http://fca.systemiial.com/api/get-subjects-by-user?token=$token2',
       ),
     );
     var client = http.Client();
@@ -47,9 +48,9 @@ class _MainHomePage2State extends State<MainHomePage2> {
       //   Token3= data["access_token"];
       // });
       // print("This is my token:  $Token3");
-      return AllSubject.fromJson(data);
+      return SubByUser.fromJson(data);
     } else {
-      return AllSubject.fromJson(data);
+      return SubByUser.fromJson(data);
     }
   }
 
@@ -71,6 +72,7 @@ class _MainHomePage2State extends State<MainHomePage2> {
                 width: 200,
               ),
             ),
+            
             elevation: 0,
             backgroundColor: Colors.white,
             // actions: [
@@ -249,7 +251,7 @@ class _MainHomePage2State extends State<MainHomePage2> {
             child: Column(
               children: [
                 Expanded(
-                  child: FutureBuilder<AllSubject>(
+                  child: FutureBuilder<SubByUser>(
                       future: getdata(),
                       builder: (context, snapshot) {
                         if (snapshot.hasData) {

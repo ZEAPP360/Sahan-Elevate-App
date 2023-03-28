@@ -78,6 +78,9 @@ class _Profile2State extends State<Profile2> {
             iconTheme: const IconThemeData(
               color: Color(0xff0b5e54),
             ),
+            leading: const BackButton(
+    color: Colors.black, // <-- SEE HERE
+  ),
             title: Padding(
               padding: const EdgeInsets.only(top: 30, right: 20),
               child: Image.asset(
