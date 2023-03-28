@@ -26,7 +26,7 @@ class _MainHomePage2State extends State<MainHomePage2> {
     super.initState();
     getdata();
   }
- 
+
   Future<AllSubject> getdata() async {
     // ignore: unused_local_variable
     var params = {"token": "$token2"};
@@ -42,7 +42,6 @@ class _MainHomePage2State extends State<MainHomePage2> {
     print("Homepage token recieved:   $token2");
     print("MainHomePage Response:     ${response2.body}");
 
-  
     if (response2.statusCode == 200) {
       //  setState(() {
       //   Token3= data["access_token"];
@@ -114,43 +113,59 @@ class _MainHomePage2State extends State<MainHomePage2> {
                   //   ),
                   //   currentAccountPicture: FlutterLogo(),
                   // ),
-                  Container(margin: const EdgeInsets.only(right: 160),child: Padding(padding: const EdgeInsets.all(12.0),child: Container(width: 30.0,height: 140.0,decoration: const BoxDecoration(shape: BoxShape.circle,image: DecorationImage(image: AssetImage("images/logocircle.png")))), ),
+                  Container(
+                    margin: const EdgeInsets.only(right: 160),
+                    child: Padding(
+                      padding: const EdgeInsets.all(12.0),
+                      child: Container(
+                          width: 30.0,
+                          height: 140.0,
+                          decoration: const BoxDecoration(
+                              shape: BoxShape.circle,
+                              image: DecorationImage(
+                                  image: AssetImage("images/logocircle.png")))),
+                    ),
                   ),
                   const SizedBox(
                     height: 40,
                   ),
                   TextButton(
-    onPressed: () {
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) =>  Profile2(token4:token2)),
-      );
-    },
-    child: Container(
-      alignment: Alignment.center,
-      width: 350,
-      height: 40,
-      // ignore: sort_child_properties_last
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Container(
-            margin: EdgeInsets.only(left: 50),
-            child: Text(
-              "View Profile",
-              style: TextStyle(
-                fontSize: 15,
-                color: Colors.white,
-              ),
-            ),
-          ),
-          Container(
-              margin: const EdgeInsets.only(right: 30),
-              child: const Icon(Icons.arrow_forward, size: 25, color: Colors.white))
-        ],
-      ),
-      decoration: BoxDecoration(color: const Color.fromARGB(255, 155, 156, 156),borderRadius: BorderRadius.circular(25), ),
-    ),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => Profile2(token4: token2)),
+                      );
+                    },
+                    child: Container(
+                      alignment: Alignment.center,
+                      width: 350,
+                      height: 40,
+                      // ignore: sort_child_properties_last
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Container(
+                            margin: EdgeInsets.only(left: 50),
+                            child: Text(
+                              "View Profile",
+                              style: TextStyle(
+                                fontSize: 15,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                          Container(
+                              margin: const EdgeInsets.only(right: 30),
+                              child: const Icon(Icons.arrow_forward,
+                                  size: 25, color: Colors.white))
+                        ],
+                      ),
+                      decoration: BoxDecoration(
+                        color: const Color.fromARGB(255, 155, 156, 156),
+                        borderRadius: BorderRadius.circular(25),
+                      ),
+                    ),
                   ),
                   TextButton(
                     onPressed: () {
@@ -201,10 +216,16 @@ class _MainHomePage2State extends State<MainHomePage2> {
                               ),
                             ),
                           ),
-                          Container(margin: const EdgeInsets.only(right: 30),child: const Icon(Icons.arrow_forward,size: 25, color: Colors.white))
+                          Container(
+                              margin: const EdgeInsets.only(right: 30),
+                              child: const Icon(Icons.arrow_forward,
+                                  size: 25, color: Colors.white))
                         ],
                       ),
-                      decoration: BoxDecoration(color: const Color.fromARGB(255, 155, 156, 156),borderRadius: BorderRadius.circular(25), ),
+                      decoration: BoxDecoration(
+                        color: const Color.fromARGB(255, 155, 156, 156),
+                        borderRadius: BorderRadius.circular(25),
+                      ),
                     ),
                   ),
                   const SizedBox(
@@ -257,15 +278,16 @@ class _MainHomePage2State extends State<MainHomePage2> {
                                         )
                                             //set border radius more than 50% of height and width to make circle
                                             ),
-                                        color: const  Color(0xff0b5e54),
+                                        color: const Color(0xff0b5e54),
                                         margin: const EdgeInsets.all(20),
                                         child: Row(
                                           children: [
-                                          Container(
+                                            Container(
                                               // ignore: sort_child_properties_last
                                               child: Padding(
-                                                padding: const EdgeInsets.symmetric(
-                                                    vertical: 40),
+                                                padding:
+                                                    const EdgeInsets.symmetric(
+                                                        vertical: 40),
                                                 child: RotatedBox(
                                                     quarterTurns: 3,
                                                     child: Center(
@@ -314,8 +336,7 @@ class _MainHomePage2State extends State<MainHomePage2> {
                                               width: 30,
                                             ),
                                             const Padding(
-                                              padding:
-                                                  EdgeInsets.all(14.0),
+                                              padding: EdgeInsets.all(14.0),
                                               child: VerticalDivider(
                                                 width: 5,
                                                 color: Colors.white,
@@ -324,15 +345,19 @@ class _MainHomePage2State extends State<MainHomePage2> {
                                             const SizedBox(
                                               width: 20,
                                             ),
-                                             InkWell(
+                                            InkWell(
                                               onTap: () {
                                                 //ModuleByUser
-                                                 Navigator.push(
-    context,
-    MaterialPageRoute(builder: (context) =>  ModuleByUser(token2: token2,)),
-  );
+                                                Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          ModuleByUser(
+                                                            token2: token2,
+                                                          )),
+                                                );
                                               },
-                                              child:  Text(
+                                              child: Text(
                                                 'View Deck',
                                                 style: TextStyle(
                                                     color: Colors.white),
@@ -444,7 +469,7 @@ TextButton button(
     onPressed: () {
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) =>  Profile2()),
+        MaterialPageRoute(builder: (context) => Profile2()),
       );
     },
     child: Container(
@@ -467,7 +492,8 @@ TextButton button(
           ),
           Container(
               margin: const EdgeInsets.only(right: 30),
-              child: const Icon(Icons.arrow_forward, size: 25, color: Colors.white))
+              child: const Icon(Icons.arrow_forward,
+                  size: 25, color: Colors.white))
         ],
       ),
       decoration: BoxDecoration(

@@ -4,6 +4,7 @@ import 'package:learnerapp/Screens/resetpassword.dart';
 import 'package:learnerapp/Services/view_profile.dart';
 import 'package:http/http.dart' as http;
 
+import 'login_screen.dart';
 import 'profile.dart';
 
 class Profile2 extends StatefulWidget {
@@ -72,28 +73,192 @@ class _Profile2State extends State<Profile2> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Padding(
-            padding: const EdgeInsets.only(top: 20, right: 20),
-            child: Image.asset(
-              'images/elevatelogo.png',
-              height: 230,
-              width: 200,
+            centerTitle: true,
+            automaticallyImplyLeading: false,
+            iconTheme: const IconThemeData(
+              color: Color(0xff0b5e54),
             ),
-          ),
-          centerTitle: true,
-          elevation: 0,
-          backgroundColor: Colors.white,
-          actions: [
-            Padding(
-              padding: const EdgeInsets.only(right: 48, top: 16),
-              child: Icon(
-                Icons.menu,
-                size: 40,
-                color: const Color(0xFF045a4f),
+            title: Padding(
+              padding: const EdgeInsets.only(top: 30, right: 20),
+              child: Image.asset(
+                'images/elevatelogo.png',
+                height: 230,
+                width: 200,
               ),
             ),
-          ],
-        ),
+            elevation: 0,
+            backgroundColor: Colors.white,
+            // actions: [
+            //   Padding(
+            //     padding: const EdgeInsets.only(right: 48),
+            //     child: Icon(
+            //       Icons.menu,
+            //       size: 40,
+            //       color: const Color(0xFF045a4f),
+            //     ),
+            //   ),
+            // ],
+          ),
+          endDrawer: Padding(
+            padding: const EdgeInsets.only(top: 70, bottom: 80),
+            child: Drawer(
+              backgroundColor: const Color(0xff0b5e54),
+              shape: const RoundedRectangleBorder(
+                borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(50),
+                    bottomLeft: Radius.circular(50)),
+              ),
+              child: ListView(
+                // Important: Remove any padding from the ListView.
+                padding: EdgeInsets.zero,
+                children: [
+                  // const UserAccountsDrawerHeader( // <-- SEE HERE
+                  //   decoration: BoxDecoration(color: const Color(0xffffff)),
+                  //   accountName: Text(
+                  //     "hoome",
+                  //     style: TextStyle(
+                  //       fontWeight: FontWeight.bold,
+                  //     ),
+                  //   ),
+                  //   accountEmail: Text(
+                  //     "pin@gmail.com",
+                  //     style: TextStyle(
+                  //       fontWeight: FontWeight.bold,
+                  //     ),
+                  //   ),
+                  //   currentAccountPicture: FlutterLogo(),
+                  // ),
+                  Container(
+                    margin: const EdgeInsets.only(right: 160),
+                    child: Padding(
+                      padding: const EdgeInsets.all(12.0),
+                      child: Container(
+                          width: 30.0,
+                          height: 140.0,
+                          decoration: const BoxDecoration(
+                              shape: BoxShape.circle,
+                              image: DecorationImage(
+                                  image: AssetImage("images/logocircle.png")))),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 40,
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => Profile2(token4: token4)),
+                      );
+                    },
+                    child: Container(
+                      alignment: Alignment.center,
+                      width: 350,
+                      height: 40,
+                      // ignore: sort_child_properties_last
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Container(
+                            margin: EdgeInsets.only(left: 50),
+                            child: Text(
+                              "View Profile",
+                              style: TextStyle(
+                                fontSize: 15,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                          Container(
+                              margin: const EdgeInsets.only(right: 30),
+                              child: const Icon(Icons.arrow_forward,
+                                  size: 25, color: Colors.white))
+                        ],
+                      ),
+                      decoration: BoxDecoration(
+                        color: const Color.fromARGB(255, 155, 156, 156),
+                        borderRadius: BorderRadius.circular(25),
+                      ),
+                    ),
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      showDialog(
+                          context: context,
+                          builder: (ctx) => AlertDialog(
+                                title: const Text("Log out"),
+                                content: const Text("Are you sure to logout?"),
+                                actions: [
+                                  TextButton(
+                                      onPressed: () async {
+                                        Navigator.pushReplacement(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) =>
+                                                const LoginScreen(),
+                                          ),
+                                        );
+                                      },
+                                      child: const Text("Yes")),
+                                  TextButton(
+                                      onPressed: () {
+                                        Navigator.pop(context);
+                                      },
+                                      child: const Text("No"))
+                                ],
+                              ));
+                      // Navigator.push(
+                      //   context,
+                      //   MaterialPageRoute(builder: (context) => const LoginScreen()),
+                      // );
+                    },
+                    child: Container(
+                      alignment: Alignment.center,
+                      width: 350,
+                      height: 40,
+                      // ignore: sort_child_properties_last
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Container(
+                            margin: const EdgeInsets.only(left: 50),
+                            child: const Text(
+                              "Log out",
+                              style: TextStyle(
+                                fontSize: 15,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                          Container(
+                              margin: const EdgeInsets.only(right: 30),
+                              child: const Icon(Icons.arrow_forward,
+                                  size: 25, color: Colors.white))
+                        ],
+                      ),
+                      decoration: BoxDecoration(
+                        color: const Color.fromARGB(255, 155, 156, 156),
+                        borderRadius: BorderRadius.circular(25),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 150,
+                  ),
+                  // ignore: avoid_unnecessary_containers
+                  Container(
+                    // width: 10,
+                    // height: 100,
+                    child: Image.asset(
+                      "images/elevatelogo.png",
+                      width: 10,
+                    ),
+                  )
+                ],
+              ),
+            ),
+          ),
         body: Column(children: [
           // Expanded(
           //   child: FutureBuilder<MyProfileView>(
