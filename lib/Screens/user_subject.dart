@@ -5,6 +5,7 @@ import 'package:learnerapp/Screens/login_screen.dart';
 import 'package:learnerapp/Screens/profile.dart';
 import '../Services/allsub_api.dart';
 import '../Services/sub_user.dart';
+import 'all_sub.dart';
 import 'module_subjects.dart';
 import 'myprofile2.dart';
 
@@ -131,6 +132,8 @@ class _MainHomePage2State extends State<MainHomePage2> {
                   const SizedBox(
                     height: 40,
                   ),
+//////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////
                   TextButton(
                     onPressed: () {
                       Navigator.push(
@@ -169,6 +172,48 @@ class _MainHomePage2State extends State<MainHomePage2> {
                       ),
                     ),
                   ),
+//////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////
+                  TextButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => MainHomePage(allsubtoken: token2)),
+                      );
+                    },
+                    child: Container(
+                      alignment: Alignment.center,
+                      width: 350,
+                      height: 40,
+                      // ignore: sort_child_properties_last
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Container(
+                            margin: EdgeInsets.only(left: 50),
+                            child: Text(
+                              "View All Subjects",
+                              style: TextStyle(
+                                fontSize: 15,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                          Container(
+                              margin: const EdgeInsets.only(right: 30),
+                              child: const Icon(Icons.arrow_forward,
+                                  size: 25, color: Colors.white))
+                        ],
+                      ),
+                      decoration: BoxDecoration(
+                        color: const Color.fromARGB(255, 155, 156, 156),
+                        borderRadius: BorderRadius.circular(25),
+                      ),
+                    ),
+                  ),
+//////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////
                   TextButton(
                     onPressed: () {
                       showDialog(
@@ -230,6 +275,8 @@ class _MainHomePage2State extends State<MainHomePage2> {
                       ),
                     ),
                   ),
+//////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////
                   const SizedBox(
                     height: 150,
                   ),
@@ -350,14 +397,14 @@ class _MainHomePage2State extends State<MainHomePage2> {
                                             InkWell(
                                               onTap: () {
                                                 //ModuleByUser
-                                                Navigator.push(
-                                                  context,
-                                                  MaterialPageRoute(
-                                                      builder: (context) =>
-                                                          ModuleByUser(
-                                                            token2: token2,
-                                                          )),
-                                                );
+                                                // Navigator.push(
+                                                //   context,
+                                                //   MaterialPageRoute(
+                                                //       builder: (context) =>
+                                                //           ModuleByUser(
+                                                //             token2: token2,
+                                                //           )),
+                                                // );
                                               },
                                               child: Text(
                                                 'View Deck',

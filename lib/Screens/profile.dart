@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:email_validator/email_validator.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
-import 'package:learnerapp/Screens/homepage2.dart';
+import 'package:learnerapp/Screens/user_subject.dart';
 import 'package:learnerapp/Utilities/routes.dart';
 import 'package:http/http.dart' as http;
 import '../Services/editprofile_api.dart';

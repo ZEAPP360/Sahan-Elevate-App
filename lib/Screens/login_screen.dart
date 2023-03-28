@@ -3,12 +3,12 @@ import 'dart:core';
 import 'package:email_validator/email_validator.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
-import 'package:learnerapp/Screens/mainhomepage.dart';
+import 'package:learnerapp/Screens/all_sub.dart';
 import 'package:learnerapp/Screens/resetpassword.dart';
 import 'package:learnerapp/Utilities/routes.dart';
 import 'package:http/http.dart' as http;
 import '../Services/login_api.dart';
-import 'homepage2.dart';
+import 'user_subject.dart';
 import 'oldhome.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

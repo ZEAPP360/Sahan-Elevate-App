@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:learnerapp/Screens/forgot_password.dart';
 import 'package:learnerapp/Screens/login_screen.dart';
-import 'package:learnerapp/Screens/myprofile2.dart';
 import 'package:learnerapp/Screens/otpverification.dart';
 import 'package:learnerapp/Screens/profile.dart';
 import 'package:learnerapp/Screens/questiion.dart';
