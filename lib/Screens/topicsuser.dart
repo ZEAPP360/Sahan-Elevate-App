@@ -3,36 +3,37 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:learnerapp/Screens/login_screen.dart';
 import 'package:learnerapp/Screens/profile.dart';
+import 'package:learnerapp/Services/topicbyusermodel.dart';
 import '../Services/allsub_api.dart';
-import 'module_subjects.dart';
+import '../Services/module_by_sub.dart';
 import 'myprofile2.dart';
 
 // ignore: must_be_immutable
-class MainHomePage2 extends StatefulWidget {
+class TopicByUser extends StatefulWidget {
   String? token2;
 
-  MainHomePage2({this.token2, super.key});
+  TopicByUser({this.token2, super.key});
 
   @override
   // ignore: no_logic_in_create_state
-  State<MainHomePage2> createState() => _MainHomePage2State(token2);
+  State<TopicByUser> createState() => _TopicByUserState(token2);
 }
 
-class _MainHomePage2State extends State<MainHomePage2> {
+class _TopicByUserState extends State<TopicByUser> {
   String? token2;
-  _MainHomePage2State(this.token2);
+  _TopicByUserState(this.token2);
   // ignore: annotate_overrides
   void initState() {
     super.initState();
-    getdata();
+    getdata1();
   }
- 
-  Future<AllSubject> getdata() async {
+
+  Future<TopicsBySubjects> getdata1() async {
     // ignore: unused_local_variable
-    var params = {"token": "$token2"};
+    var params = {"token": "$token2", "id": 1};
     var response2 = await http.get(
       Uri.parse(
-        'http://fca.systemiial.com/api/get-all-subjects?token=$token2',
+        'http://fca.systemiial.com/api/get-topics-by-module?token=$token2&id=1',
       ),
     );
     var client = http.Client();
@@ -42,15 +43,14 @@ class _MainHomePage2State extends State<MainHomePage2> {
     print("Homepage token recieved:   $token2");
     print("MainHomePage Response:     ${response2.body}");
 
-  
     if (response2.statusCode == 200) {
       //  setState(() {
       //   Token3= data["access_token"];
       // });
       // print("This is my token:  $Token3");
-      return AllSubject.fromJson(data);
+      return TopicsBySubjects.fromJson(data);
     } else {
-      return AllSubject.fromJson(data);
+      return TopicsBySubjects.fromJson(data);
     }
   }
 
@@ -114,43 +114,59 @@ class _MainHomePage2State extends State<MainHomePage2> {
                   //   ),
                   //   currentAccountPicture: FlutterLogo(),
                   // ),
-                  Container(margin: const EdgeInsets.only(right: 160),child: Padding(padding: const EdgeInsets.all(12.0),child: Container(width: 30.0,height: 140.0,decoration: const BoxDecoration(shape: BoxShape.circle,image: DecorationImage(image: AssetImage("images/logocircle.png")))), ),
+                  Container(
+                    margin: const EdgeInsets.only(right: 160),
+                    child: Padding(
+                      padding: const EdgeInsets.all(12.0),
+                      child: Container(
+                          width: 30.0,
+                          height: 140.0,
+                          decoration: const BoxDecoration(
+                              shape: BoxShape.circle,
+                              image: DecorationImage(
+                                  image: AssetImage("images/logocircle.png")))),
+                    ),
                   ),
                   const SizedBox(
                     height: 40,
                   ),
                   TextButton(
-    onPressed: () {
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) =>  Profile2(token4:token2)),
-      );
-    },
-    child: Container(
-      alignment: Alignment.center,
-      width: 350,
-      height: 40,
-      // ignore: sort_child_properties_last
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Container(
-            margin: EdgeInsets.only(left: 50),
-            child: Text(
-              "View Profile",
-              style: TextStyle(
-                fontSize: 15,
-                color: Colors.white,
-              ),
-            ),
-          ),
-          Container(
-              margin: const EdgeInsets.only(right: 30),
-              child: const Icon(Icons.arrow_forward, size: 25, color: Colors.white))
-        ],
-      ),
-      decoration: BoxDecoration(color: const Color.fromARGB(255, 155, 156, 156),borderRadius: BorderRadius.circular(25), ),
-    ),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => Profile2(token4: token2)),
+                      );
+                    },
+                    child: Container(
+                      alignment: Alignment.center,
+                      width: 350,
+                      height: 40,
+                      // ignore: sort_child_properties_last
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Container(
+                            margin: EdgeInsets.only(left: 50),
+                            child: Text(
+                              "View Profile",
+                              style: TextStyle(
+                                fontSize: 15,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                          Container(
+                              margin: const EdgeInsets.only(right: 30),
+                              child: const Icon(Icons.arrow_forward,
+                                  size: 25, color: Colors.white))
+                        ],
+                      ),
+                      decoration: BoxDecoration(
+                        color: const Color.fromARGB(255, 155, 156, 156),
+                        borderRadius: BorderRadius.circular(25),
+                      ),
+                    ),
                   ),
                   TextButton(
                     onPressed: () {
@@ -201,10 +217,16 @@ class _MainHomePage2State extends State<MainHomePage2> {
                               ),
                             ),
                           ),
-                          Container(margin: const EdgeInsets.only(right: 30),child: const Icon(Icons.arrow_forward,size: 25, color: Colors.white))
+                          Container(
+                              margin: const EdgeInsets.only(right: 30),
+                              child: const Icon(Icons.arrow_forward,
+                                  size: 25, color: Colors.white))
                         ],
                       ),
-                      decoration: BoxDecoration(color: const Color.fromARGB(255, 155, 156, 156),borderRadius: BorderRadius.circular(25), ),
+                      decoration: BoxDecoration(
+                        color: const Color.fromARGB(255, 155, 156, 156),
+                        borderRadius: BorderRadius.circular(25),
+                      ),
                     ),
                   ),
                   const SizedBox(
@@ -228,8 +250,8 @@ class _MainHomePage2State extends State<MainHomePage2> {
             child: Column(
               children: [
                 Expanded(
-                  child: FutureBuilder<AllSubject>(
-                      future: getdata(),
+                  child: FutureBuilder<TopicsBySubjects>(
+                      future: getdata1(),
                       builder: (context, snapshot) {
                         if (snapshot.hasData) {
                           return ListView.builder(
@@ -257,15 +279,16 @@ class _MainHomePage2State extends State<MainHomePage2> {
                                         )
                                             //set border radius more than 50% of height and width to make circle
                                             ),
-                                        color: const  Color(0xff0b5e54),
+                                        color: const Color(0xff0b5e54),
                                         margin: const EdgeInsets.all(20),
                                         child: Row(
                                           children: [
-                                          Container(
+                                            Container(
                                               // ignore: sort_child_properties_last
                                               child: Padding(
-                                                padding: const EdgeInsets.symmetric(
-                                                    vertical: 40),
+                                                padding:
+                                                    const EdgeInsets.symmetric(
+                                                        vertical: 40),
                                                 child: RotatedBox(
                                                     quarterTurns: 3,
                                                     child: Center(
@@ -306,7 +329,8 @@ class _MainHomePage2State extends State<MainHomePage2> {
                                               width: 30,
                                             ),
                                             Text(
-                                              'Play Deck',
+                                              snapshot.data!.data![index]
+                                                  .description!,
                                               style: TextStyle(
                                                   color: Colors.white),
                                             ),
@@ -314,8 +338,7 @@ class _MainHomePage2State extends State<MainHomePage2> {
                                               width: 30,
                                             ),
                                             const Padding(
-                                              padding:
-                                                  EdgeInsets.all(14.0),
+                                              padding: EdgeInsets.all(14.0),
                                               child: VerticalDivider(
                                                 width: 5,
                                                 color: Colors.white,
@@ -324,20 +347,11 @@ class _MainHomePage2State extends State<MainHomePage2> {
                                             const SizedBox(
                                               width: 20,
                                             ),
-                                             InkWell(
-                                              onTap: () {
-                                                //ModuleByUser
-                                                 Navigator.push(
-    context,
-    MaterialPageRoute(builder: (context) =>  ModuleByUser(token2: token2,)),
-  );
-                                              },
-                                              child:  Text(
-                                                'View Deck',
-                                                style: TextStyle(
-                                                    color: Colors.white),
-                                              ),
-                                            ),
+                                            const Text(
+                                              'View Sub Deck',
+                                              style: TextStyle(
+                                                  color: Colors.white),
+                                            )
                                           ],
                                         ),
                                       )),
@@ -444,7 +458,7 @@ TextButton button(
     onPressed: () {
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) =>  Profile2()),
+        MaterialPageRoute(builder: (context) => Profile2()),
       );
     },
     child: Container(
@@ -467,7 +481,8 @@ TextButton button(
           ),
           Container(
               margin: const EdgeInsets.only(right: 30),
-              child: const Icon(Icons.arrow_forward, size: 25, color: Colors.white))
+              child: const Icon(Icons.arrow_forward,
+                  size: 25, color: Colors.white))
         ],
       ),
       decoration: BoxDecoration(
