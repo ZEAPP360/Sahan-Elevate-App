@@ -526,7 +526,69 @@ class _Profile2State extends State<Profile2> {
 /////////////////////////////////////////////////////////////////////////////////////
                   button(context, "CHANGE PASSWORD", Color(0xff0b5e54)),
 ////////////////////////////////////////////////////////////////////////////////////
-                 button(context, "DELETE ACCOUNT", Colors.pink),
+                //  button(context, "DELETE ACCOUNT", Colors.pink),
+
+      TextButton(
+     onPressed: () {
+                      showDialog(
+                          context: context,
+                          builder: (ctx) => AlertDialog(
+                                title: const Text("Log out"),
+                                content: const Text("Are you sure to logout?"),
+                                actions: [
+                                  TextButton(
+                                      onPressed: () async {
+                                        Navigator.pushReplacement(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) =>
+                                                const LoginScreen(),
+                                          ),
+                                        );
+                                      },
+                                      child: const Text("Yes")),
+                                  TextButton(
+                                      onPressed: () {
+                                        Navigator.pop(context);
+                                      },
+                                      child: const Text("No"))
+                                ],
+                              ));
+                      // Navigator.push(
+                      //   context,
+                      //   MaterialPageRoute(builder: (context) => const LoginScreen()),
+                      // );
+                    },
+      child: Container(
+        alignment: Alignment.center,
+        width: 350,
+        height: 50,
+        decoration: BoxDecoration(
+          color: Color.fromARGB(255, 156, 5, 60),
+          borderRadius: BorderRadius.circular(25),
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Container(
+              margin: EdgeInsets.only(left: 50),
+              child: Text(
+                "LOGOUT",
+                style: TextStyle(
+                  fontSize: 15,
+                  color: Colors.white,
+                ),
+              ),
+            ),
+            Container(
+                margin: EdgeInsets.only(right: 30),
+                child: Icon(Icons.arrow_forward, size: 25, color: Colors.grey))
+          ],
+        ),
+      ),
+    ),
+
+                 
                 ],
               )
         ]));
