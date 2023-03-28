@@ -1,0 +1,419 @@
+{
+	"info": {
+		"_postman_id": "9ec07331-87bf-47a1-838d-4411c8eabd9e",
+		"name": "FlashCardApp",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "378776"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://fca.systemiial.com/api/login?email=dilini@gmail.com&password=123456aA&status=1",
+					"protocol": "http",
+					"host": [
+						"fca",
+						"systemiial",
+						"com"
+					],
+					"path": [
+						"api",
+						"login"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "dilini@gmail.com"
+						},
+						{
+							"key": "password",
+							"value": "123456aA"
+						},
+						{
+							"key": "status",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ForgotPassword",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://fca.systemiial.com/api/forgot-password?email=dilini@gmail.com",
+					"protocol": "http",
+					"host": [
+						"fca",
+						"systemiial",
+						"com"
+					],
+					"path": [
+						"api",
+						"forgot-password"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "dilini@gmail.com"
+						},
+						{
+							"key": "password",
+							"value": "123456aA",
+							"disabled": true
+						},
+						{
+							"key": "status",
+							"value": "1",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "restForgotPassword",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "password",
+							"value": "123456sS",
+							"type": "text"
+						},
+						{
+							"key": "token",
+							"value": "4v6FDqjnJQLDccFVVC9QII9R09az8i5bYSdkNlR6",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://fca.systemiial.com/api/reset-forgot-password",
+					"protocol": "http",
+					"host": [
+						"fca",
+						"systemiial",
+						"com"
+					],
+					"path": [
+						"api",
+						"reset-forgot-password"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "restPassword",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "password",
+							"value": "123456aA",
+							"type": "text"
+						},
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vZmNhLnN5c3RlbWlpYWwuY29tL2FwaS9sb2dpbiIsImlhdCI6MTY3OTg0NjEyNywiZXhwIjoxNjc5ODQ5NzI3LCJuYmYiOjE2Nzk4NDYxMjcsImp0aSI6IjQ2MjkyME9Jc3pHRnJkQVIiLCJzdWIiOiIyIiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.RQuTp_MHx8p87SDmSLl89Ho40776s_FZ5Lyc2rwLvnE",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://fca.systemiial.com/api/reset-password",
+					"protocol": "http",
+					"host": [
+						"fca",
+						"systemiial",
+						"com"
+					],
+					"path": [
+						"api",
+						"reset-password"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "viewProfile",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "password",
+							"value": "123456aA",
+							"type": "text"
+						},
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vZmNhLnN5c3RlbWlpYWwuY29tL2FwaS9sb2dpbiIsImlhdCI6MTY3OTg0NjEyNywiZXhwIjoxNjc5ODQ5NzI3LCJuYmYiOjE2Nzk4NDYxMjcsImp0aSI6IjQ2MjkyME9Jc3pHRnJkQVIiLCJzdWIiOiIyIiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.RQuTp_MHx8p87SDmSLl89Ho40776s_FZ5Lyc2rwLvnE",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://fca.systemiial.com/api/view-profile?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vZmNhLnN5c3RlbWlpYWwuY29tL2FwaS9sb2dpbiIsImlhdCI6MTY3OTg0ODg5NSwiZXhwIjoxNjc5ODUyNDk1LCJuYmYiOjE2Nzk4NDg4OTUsImp0aSI6ImpQTnIxbzQzTzI4QXQxUjMiLCJzdWIiOiIyIiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.TWKjdOqLxo4ZtgXKpWaItSOJNaGmPvUQ1ie7RYXLRG4",
+					"protocol": "http",
+					"host": [
+						"fca",
+						"systemiial",
+						"com"
+					],
+					"path": [
+						"api",
+						"view-profile"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vZmNhLnN5c3RlbWlpYWwuY29tL2FwaS9sb2dpbiIsImlhdCI6MTY3OTg0ODg5NSwiZXhwIjoxNjc5ODUyNDk1LCJuYmYiOjE2Nzk4NDg4OTUsImp0aSI6ImpQTnIxbzQzTzI4QXQxUjMiLCJzdWIiOiIyIiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.TWKjdOqLxo4ZtgXKpWaItSOJNaGmPvUQ1ie7RYXLRG4"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getSubjectsByUser",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://fca.systemiial.com/api/get-subjects-by-user?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vZmNhLnN5c3RlbWlpYWwuY29tL2FwaS9sb2dpbiIsImlhdCI6MTY3ODk0NDAxNSwiZXhwIjoxNjc4OTQ3NjE1LCJuYmYiOjE2Nzg5NDQwMTUsImp0aSI6IlYzdEZLdVljUlh2SG5LV3YiLCJzdWIiOiIyIiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.JQ0f1npHVPZITuVWYPqhBCw4ZpNNtFrtNv6q4tK6YCY",
+					"protocol": "http",
+					"host": [
+						"fca",
+						"systemiial",
+						"com"
+					],
+					"path": [
+						"api",
+						"get-subjects-by-user"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vZmNhLnN5c3RlbWlpYWwuY29tL2FwaS9sb2dpbiIsImlhdCI6MTY3ODk0NDAxNSwiZXhwIjoxNjc4OTQ3NjE1LCJuYmYiOjE2Nzg5NDQwMTUsImp0aSI6IlYzdEZLdVljUlh2SG5LV3YiLCJzdWIiOiIyIiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.JQ0f1npHVPZITuVWYPqhBCw4ZpNNtFrtNv6q4tK6YCY"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAllSubjects",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://fca.systemiial.com/api/get-all-subjects?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vZmNhLnN5c3RlbWlpYWwuY29tL2FwaS9sb2dpbiIsImlhdCI6MTY3OTM5MDAxNiwiZXhwIjoxNjc5MzkzNjE2LCJuYmYiOjE2NzkzOTAwMTYsImp0aSI6IldObVNTVGZqWmJqR1RJYXkiLCJzdWIiOiIyIiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.P7Bi87I4pi8udzi_QwOfAsuWke5HOAzAO7kqiLmUiJg",
+					"protocol": "http",
+					"host": [
+						"fca",
+						"systemiial",
+						"com"
+					],
+					"path": [
+						"api",
+						"get-all-subjects"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vZmNhLnN5c3RlbWlpYWwuY29tL2FwaS9sb2dpbiIsImlhdCI6MTY3OTM5MDAxNiwiZXhwIjoxNjc5MzkzNjE2LCJuYmYiOjE2NzkzOTAwMTYsImp0aSI6IldObVNTVGZqWmJqR1RJYXkiLCJzdWIiOiIyIiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.P7Bi87I4pi8udzi_QwOfAsuWke5HOAzAO7kqiLmUiJg"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getModulesBySubject",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://fca.systemiial.com/api/get-modules-by-subject?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vZmNhLnN5c3RlbWlpYWwuY29tL2FwaS9sb2dpbiIsImlhdCI6MTY3ODk0NDAxNSwiZXhwIjoxNjc4OTQ3NjE1LCJuYmYiOjE2Nzg5NDQwMTUsImp0aSI6IlYzdEZLdVljUlh2SG5LV3YiLCJzdWIiOiIyIiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.JQ0f1npHVPZITuVWYPqhBCw4ZpNNtFrtNv6q4tK6YCY&id=1",
+					"protocol": "http",
+					"host": [
+						"fca",
+						"systemiial",
+						"com"
+					],
+					"path": [
+						"api",
+						"get-modules-by-subject"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vZmNhLnN5c3RlbWlpYWwuY29tL2FwaS9sb2dpbiIsImlhdCI6MTY3ODk0NDAxNSwiZXhwIjoxNjc4OTQ3NjE1LCJuYmYiOjE2Nzg5NDQwMTUsImp0aSI6IlYzdEZLdVljUlh2SG5LV3YiLCJzdWIiOiIyIiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.JQ0f1npHVPZITuVWYPqhBCw4ZpNNtFrtNv6q4tK6YCY"
+						},
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getTopicsByModule",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://fca.systemiial.com/api/get-topics-by-module?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vZmNhLnN5c3RlbWlpYWwuY29tL2FwaS9sb2dpbiIsImlhdCI6MTY3ODk0NDAxNSwiZXhwIjoxNjc4OTQ3NjE1LCJuYmYiOjE2Nzg5NDQwMTUsImp0aSI6IlYzdEZLdVljUlh2SG5LV3YiLCJzdWIiOiIyIiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.JQ0f1npHVPZITuVWYPqhBCw4ZpNNtFrtNv6q4tK6YCY&id=3",
+					"protocol": "http",
+					"host": [
+						"fca",
+						"systemiial",
+						"com"
+					],
+					"path": [
+						"api",
+						"get-topics-by-module"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vZmNhLnN5c3RlbWlpYWwuY29tL2FwaS9sb2dpbiIsImlhdCI6MTY3ODk0NDAxNSwiZXhwIjoxNjc4OTQ3NjE1LCJuYmYiOjE2Nzg5NDQwMTUsImp0aSI6IlYzdEZLdVljUlh2SG5LV3YiLCJzdWIiOiIyIiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.JQ0f1npHVPZITuVWYPqhBCw4ZpNNtFrtNv6q4tK6YCY"
+						},
+						{
+							"key": "id",
+							"value": "3"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Dilini Perera",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "dilini.b.perera@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123456aA",
+							"type": "text"
+						},
+						{
+							"key": "password_confirmation",
+							"value": "123456aA",
+							"type": "text"
+						},
+						{
+							"key": "pref_ids",
+							"value": "1,2,3",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://fca.workdash.com.au/api/register",
+					"protocol": "http",
+					"host": [
+						"fca",
+						"workdash",
+						"com",
+						"au"
+					],
+					"path": [
+						"api",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updateProfile",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Dilini Perera",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "dilini.b.perera@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123456aA",
+							"type": "text"
+						},
+						{
+							"key": "password_confirmation",
+							"value": "123456aA",
+							"type": "text"
+						},
+						{
+							"key": "pref_ids",
+							"value": "1,2,3",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://fca.workdash.com.au/api/update-profile",
+					"protocol": "http",
+					"host": [
+						"fca",
+						"workdash",
+						"com",
+						"au"
+					],
+					"path": [
+						"api",
+						"update-profile"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

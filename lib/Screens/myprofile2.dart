@@ -4,6 +4,8 @@ import 'package:learnerapp/Screens/resetpassword.dart';
 import 'package:learnerapp/Services/view_profile.dart';
 import 'package:http/http.dart' as http;
 
+import 'profile.dart';
+
 class Profile2 extends StatefulWidget {
   String? token4;
 
@@ -21,13 +23,14 @@ class _Profile2State extends State<Profile2> {
   // ignore: annotate_overrides
   void initState() {
     super.initState();
-    // print(token3);
     getProfile();
   }
 
   String Name = "";
   String Email = "";
   List Subjects = [];
+  final _formkey = GlobalKey<FormState>();
+  
   getProfile() async {
     // ignore: unused_local_variable
     var params = {"token": "$token4"};
@@ -64,7 +67,7 @@ class _Profile2State extends State<Profile2> {
       // return MyProfileView.fromJson(data);
     }
   }
-
+ 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -315,9 +318,47 @@ class _Profile2State extends State<Profile2> {
                       ),
                     ),
                   ),
-                  button(context, "EDIT PROFILE", Color(0xff0b5e54)),
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+                  TextButton(
+     onPressed: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => MyProfile(editprofiletoken:token4)),
+        );
+      },
+      child: Container(
+        alignment: Alignment.center,
+        width: 350,
+        height: 50,
+        decoration: BoxDecoration(
+          color: const Color(0xff0b5e54),
+          borderRadius: BorderRadius.circular(25),
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Container(
+              margin: EdgeInsets.only(left: 50),
+              child: Text(
+                "EDIT PROFILE",
+                style: TextStyle(
+                  fontSize: 15,
+                  color: Colors.white,
+                ),
+              ),
+            ),
+            Container(
+                margin: EdgeInsets.only(right: 30),
+                child: Icon(Icons.arrow_forward, size: 25, color: Colors.grey))
+          ],
+        ),
+      ),
+    ),
+/////////////////////////////////////////////////////////////////////////////////////
                   button(context, "CHANGE PASSWORD", Color(0xff0b5e54)),
-                  button(context, "DELETE ACCOUNT", Colors.pink),
+////////////////////////////////////////////////////////////////////////////////////
+                 button(context, "DELETE ACCOUNT", Colors.pink),
                 ],
               )
         ]));

@@ -15,7 +15,7 @@ void main() => runApp(const AuthApp());
 
 class AuthApp extends StatelessWidget {
   const AuthApp({Key? key}) : super(key: key);
-
+  
 
   @override
   Widget build(BuildContext context) {
