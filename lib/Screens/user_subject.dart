@@ -2,12 +2,12 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:learnerapp/Screens/login_screen.dart';
-import 'package:learnerapp/Screens/profile.dart';
+import 'package:learnerapp/Screens/edit_profile.dart';
 import '../Services/allsub_api.dart';
 import '../Services/sub_user.dart';
 import 'all_sub.dart';
 import 'module_subjects.dart';
-import 'myprofile2.dart';
+import 'profile_page.dart';
 
 // ignore: must_be_immutable
 class MainHomePage2 extends StatefulWidget {

@@ -1,11 +1,11 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:learnerapp/Screens/resetpassword.dart';
+import 'package:learnerapp/Screens/reset_password.dart';
 import 'package:learnerapp/Services/view_profile.dart';
 import 'package:http/http.dart' as http;
 
 import 'login_screen.dart';
-import 'profile.dart';
+import 'edit_profile.dart';
 
 class Profile2 extends StatefulWidget {
   String? token4;
@@ -404,7 +404,7 @@ class _Profile2State extends State<Profile2> {
                                     height: 8,
                                   ),
                                   Text(
-                                    'SELECT SUUBJECT',
+                                    'SELECT SUBJECT',
                                     style: TextStyle(
                                         color: Colors.white, fontSize: 12),
                                   ),

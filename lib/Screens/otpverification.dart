@@ -178,7 +178,7 @@ class _LoginScreenState extends State<OtpVerification> {
                             onPressed: (() {
                               Navigator.pushNamed(
                                 context,
-                                MyRoutes.resetpassword,
+                                MyRoutes.question,
                               );
                             }),
                             child: const Text(

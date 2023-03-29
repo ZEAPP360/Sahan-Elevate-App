@@ -6,7 +6,7 @@ import 'package:learnerapp/Screens/user_subject.dart';
 import 'package:learnerapp/Utilities/routes.dart';
 import 'package:http/http.dart' as http;
 import '../Services/editprofile_api.dart';
-import 'myprofile2.dart';
+import 'profile_page.dart';
 
 // ignore: must_be_immutable
 class MyProfile extends StatefulWidget {

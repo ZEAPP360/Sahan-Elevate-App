@@ -4,7 +4,7 @@ import 'package:email_validator/email_validator.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:learnerapp/Screens/all_sub.dart';
-import 'package:learnerapp/Screens/resetpassword.dart';
+import 'package:learnerapp/Screens/reset_password.dart';
 import 'package:learnerapp/Utilities/routes.dart';
 import 'package:http/http.dart' as http;
 import '../Services/login_api.dart';
@@ -26,7 +26,6 @@ class _LoginScreenState extends State<LoginScreen> {
   bool isValidForm = false;
   String? password;
   String? confirmpassword;
-  String? gtoken;
   
 
   // ignore: annotate_overrides
@@ -59,10 +58,10 @@ class _LoginScreenState extends State<LoginScreen> {
     // print("This is My email ${data["data"]["email"]}");
     // print("This is My password ${mypass}");
 
-    print("My token: ${data["access_token"]}");
-    print("My email is: ${data["user"]["email"]}");
-    response = response1.statusCode;
-    print(data);
+    // print("My token: ${data["access_token"]}");
+    // print("My email is: ${data["user"]["email"]}");
+    // response = response1.statusCode;
+    // print(data);
     // print("This is my email: ${data["email"]}");
    
     print("Login Method Test Print");
@@ -186,7 +185,7 @@ const snackBar = SnackBar(content: Text("Enter Correct Crendentials"));
                           children: [
                             // SizedBox(width: 80,),
                             const Padding(
-                              padding: EdgeInsets.only(left: 100),
+                              padding: EdgeInsets.only(left: 110),
                               child: Text(
                                 'Welcome Back,',
                                 style: TextStyle(
@@ -219,7 +218,7 @@ const snackBar = SnackBar(content: Text("Enter Correct Crendentials"));
                             //     totalRepeatCount: 2,
                             //   ),
                             Padding(
-                              padding: const EdgeInsets.only(left: 80),
+                              padding: const EdgeInsets.only(left: 100),
                               child: Row(
                                 children: const [ Text(
                                     'Login',
@@ -236,7 +235,7 @@ const snackBar = SnackBar(content: Text("Enter Correct Crendentials"));
                                     width: 5,
                                   ),
                                   Text(
-                                    'for Continue !',
+                                    'to Continue !',
                                     style: TextStyle(
                                       color: Colors.black,
                                       fontSize: 28.26,

@@ -2,11 +2,11 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:learnerapp/Screens/login_screen.dart';
-import 'package:learnerapp/Screens/profile.dart';
+import 'package:learnerapp/Screens/edit_profile.dart';
 import 'package:learnerapp/Screens/topicsuser.dart';
 import '../Services/allsub_api.dart';
 import '../Services/module_by_sub.dart';
-import 'myprofile2.dart';
+import 'profile_page.dart';
 
 // ignore: must_be_immutable
 class ModuleByUser extends StatefulWidget {

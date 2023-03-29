@@ -7,7 +7,7 @@ import 'package:learnerapp/Screens/user_subject.dart';
 import '../Services/allsub_api.dart';
 import '../Services/home_api.dart';
 import 'login_screen.dart';
-import 'myprofile2.dart';
+import 'profile_page.dart';
 
 class MainHomePage extends StatefulWidget {
     String? allsubtoken;

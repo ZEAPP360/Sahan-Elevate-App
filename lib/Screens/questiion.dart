@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../Utilities/routes.dart';
+
 class ShowAnswer extends StatelessWidget {
   const ShowAnswer({super.key});
 
@@ -122,7 +124,10 @@ class ShowAnswer extends StatelessWidget {
           ),
           //Button
            TextButton(
-                onPressed: (() {}),
+                onPressed: (() { Navigator.pushNamed(
+                                context,
+                                MyRoutes.answer,
+                              );}),
                 child: Container(
                   alignment: Alignment.center,
                   width: 350,

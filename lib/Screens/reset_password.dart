@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:learnerapp/Utilities/routes.dart';
 import 'package:http/http.dart' as http;
 import '../Services/resetpass_api.dart';
-import 'myprofile2.dart';
+import 'profile_page.dart';
 
 // ignore: must_be_immutable
 class ResetPassword extends StatefulWidget {

@@ -1,9 +1,12 @@
 import 'dart:convert';
+import 'package:learnerapp/Screens/login_screen.dart';
 import '../Services/forgotpass_api.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:learnerapp/Utilities/routes.dart';
 import 'package:http/http.dart' as http;
+
+import 'reset_forgot_password.dart';
 
 class ForgotPassword extends StatefulWidget {
   const ForgotPassword({Key? key}) : super(key: key);
@@ -16,53 +19,78 @@ class _LoginScreenState extends State<ForgotPassword> {
   bool _isObscure = true;
   bool isValidForm = false;
   bool visible = false;
-  String? forgotToken;
+  String? forgotToken = '';
 
-  var email = TextEditingController();
+  final emailController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
 
   // ignore: annotate_overrides
-  void initState() {
-    super.initState();
-    getForgot();
-  }
+  // void initState() {
+  //   super.initState();
+  //   getForgot();
+  // }
 
   Future<ForgotPassword2?> getForgot() async {
-    email = TextEditingController();
     // ignore: unused_local_variable
-    var params = {"email": email};
+    var params = {"email": emailController.text};
     var response = await http.get(
       Uri.parse(
-        'http://fca.systemiial.com/api/forgot-password?email=dilini@gmail.com',
+        'http://fca.systemiial.com/api/forgot-password?email=${emailController.text}',
       ),
     );
     var client = http.Client();
     var data = jsonDecode(response.body.toString());
 
-    String? forgotToken = "${data["data"]["forgot_token"]}";
-    print("This is Forgot Token:   ${data["data"]["forgot_token"]}");
-    print("Forgot Password Response:   ${response.body}");
-    print(forgotToken);
+    // forgotToken = "${data["data"]["forgot_token"]}";
+    // print("This is Forgot Token:   ${data["data"]["forgot_token"]}");
+    // print("Forgot Password Response:   ${response.body}");
+    // print(forgotToken);
 
-    if (response.statusCode == 200) {
+    //  String? Code= "${data["data"]["forgot_token"]}";
+    //  print("Code:   ${data["success"]}");
+
+    // if (response.statusCode == 200) {
+    //   return ForgotPassword2.fromJson(data);
+    // }
+    if (data["success"] == true) {
+      // ignore: use_build_context_synchronously
+      showDialog(
+        context: context,
+        builder: (_) => AlertDialog(
+          title: const Text('Password Reset'),
+          content: const Text(
+              'An email has been sent with instructions to reset your password.'),
+          actions: <Widget>[
+            TextButton(
+              child: const Text('OK'),
+              onPressed: () {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => const LoginScreen()),
+                );
+              },
+            ),
+          ],
+        ),
+      );
       return ForgotPassword2.fromJson(data);
     } else {
       // ignore: use_build_context_synchronously
       return showDialog(
         context: context,
         builder: (_) => AlertDialog(
-          title: Text('Error'),
-          content: Text('An error occurred. Please try again later.'),
+          title: const Text('Error'),
+          content: const Text('An error occurred. Please try correct email.'),
           actions: <Widget>[
             TextButton(
-              child: Text('OK'),
+              child: const Text('OK'),
               onPressed: () {
-                Navigator.of(context).pop();
+                Navigator.pop(context);
               },
             ),
           ],
         ),
-      );;
+      );
     }
   }
 
@@ -76,7 +104,7 @@ class _LoginScreenState extends State<ForgotPassword> {
           child: MaterialButton(
             minWidth: 2,
             shape: const CircleBorder(),
-            color: Color(0xFF045a4f),
+            color: const Color(0xFF045a4f),
             padding: const EdgeInsets.all(5),
             onPressed: () {
               Navigator.pushNamed(
@@ -84,7 +112,7 @@ class _LoginScreenState extends State<ForgotPassword> {
                 MyRoutes.loginScreen,
               );
             },
-            child: Center(
+            child: const Center(
               child: Icon(
                 Icons.arrow_back,
                 size: 20,
@@ -129,13 +157,13 @@ class _LoginScreenState extends State<ForgotPassword> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 40,
                     ),
-                    Text(
+                    const Text(
                       'Forgot Password',
                       style: TextStyle(
                         color: Colors.black,
@@ -145,18 +173,20 @@ class _LoginScreenState extends State<ForgotPassword> {
                         fontWeight: FontWeight.w500,
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 30,
                     ),
+                    // ignore: avoid_unnecessary_containers
                     Container(
-                      child: Text(
+                      child: const Text(
                         'Enter your email address to reset the  ',
                         style:
                             TextStyle(color: Color(0xffA5AABB), fontSize: 20),
                       ),
                     ),
+                    // ignore: avoid_unnecessary_containers
                     Container(
-                      child: Text(
+                      child: const Text(
                         'password',
                         style: TextStyle(
                           fontSize: 20,
@@ -164,7 +194,7 @@ class _LoginScreenState extends State<ForgotPassword> {
                         ),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 40,
                     ),
                     Padding(
@@ -176,7 +206,7 @@ class _LoginScreenState extends State<ForgotPassword> {
                         children: [
                           // Note: Same code is applied for the TextFormField as well
                           TextFormField(
-                            controller: email,
+                            controller: emailController,
                             decoration: InputDecoration(
                                 hintText: 'Enter Your Email',
                                 labelText: 'Email',
@@ -215,59 +245,41 @@ class _LoginScreenState extends State<ForgotPassword> {
                                 setState(() {
                                   isValidForm = true;
                                 });
-                                // Navigator.pushNamed(context, MyRoutes.waiting);
                                 getForgot();
-                                showDialog(
-                                  context: context,
-                                  builder: (_) => AlertDialog(
-                                    title: Text('Password Reset'),
-                                    content: Text(
-                                        'An email has been sent with instructions to reset your password.'),
-                                    actions: <Widget>[
-                                      TextButton(
-                                        child: Text('OK'),
-                                        onPressed: () {
-                                          Navigator.of(context).pop();
-                                        },
-                                      ),
-                                    ],
-                                  ),
-                                );
                               } else {
                                 setState(() {
                                   isValidForm = false;
                                 });
                               }
                             },
-                            // onPressed: (() {
-                            //   Navigator.pushNamed(context, MyRoutes.waiting);
-                            // }),
                             child: Container(
                               alignment: Alignment.center,
                               width: 400,
                               height: 50,
-                              child: Text(
+                              decoration: BoxDecoration(
+                                color: const Color(0xFF045a4f),
+                                borderRadius: BorderRadius.circular(25),
+                              ),
+                              child: const Text(
                                 'Send',
                                 style: TextStyle(
                                   fontSize: 18,
                                   color: Colors.white,
                                 ),
                               ),
-                              decoration: BoxDecoration(
-                                color: Color(0xFF045a4f),
-                                borderRadius: BorderRadius.circular(25),
-                              ),
                             ),
                           ),
+                          // Text("This is forgot token: $forgotToken"),
                           Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Text('Don\'t recieve the Code ?'),
                               TextButton(
                                 onPressed: (() {
-                                  // Navigator.pushNamed(
-                                  //   context,
-                                  //   MyRoutes.resetpassword,
-                                  // );
+                                  Navigator.pushNamed(
+                                    context,
+                                    MyRoutes.otpVerification,
+                                  );
                                 }),
                                 child: const Text(
                                   'Resend Code',
@@ -279,7 +291,6 @@ class _LoginScreenState extends State<ForgotPassword> {
                                 ),
                               ),
                             ],
-                            mainAxisAlignment: MainAxisAlignment.center,
                           ),
                         ],
                       ),
