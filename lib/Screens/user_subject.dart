@@ -397,14 +397,14 @@ class _MainHomePage2State extends State<MainHomePage2> {
                                             InkWell(
                                               onTap: () {
                                                 //ModuleByUser
-                                                // Navigator.push(
-                                                //   context,
-                                                //   MaterialPageRoute(
-                                                //       builder: (context) =>
-                                                //           ModuleByUser(
-                                                //             token2: token2,
-                                                //           )),
-                                                // );
+                                                Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          ModuleByUser(
+                                                            token2: token2,
+                                                          )),
+                                                );
                                               },
                                               child: Text(
                                                 'View Deck',
