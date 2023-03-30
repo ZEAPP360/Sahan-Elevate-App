@@ -5,7 +5,6 @@ import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:learnerapp/Utilities/routes.dart';
 import 'package:http/http.dart' as http;
-//test
 import 'reset_forgot_password.dart';
 
 class ForgotPassword extends StatefulWidget {
