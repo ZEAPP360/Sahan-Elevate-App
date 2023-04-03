@@ -5,6 +5,7 @@ import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:learnerapp/Utilities/routes.dart';
 import 'package:http/http.dart' as http;
+
 import 'reset_forgot_password.dart';
 
 class ForgotPassword extends StatefulWidget {
@@ -260,7 +261,7 @@ class _LoginScreenState extends State<ForgotPassword> {
                                 borderRadius: BorderRadius.circular(25),
                               ),
                               child: const Text(
-                                'Send',
+                                'SEND',
                                 style: TextStyle(
                                   fontSize: 18,
                                   color: Colors.white,
@@ -272,7 +273,7 @@ class _LoginScreenState extends State<ForgotPassword> {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Text('Don\'t recieve the Code ?'),
+                              Text('Don\'t recieved the code ?'),
                               TextButton(
                                 onPressed: (() {
                                   Navigator.pushNamed(

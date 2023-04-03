@@ -333,7 +333,7 @@ class _MyProfileState extends State<MyProfile> {
                                   children: [
                                     Material(
                                       child: Checkbox(
-                                        activeColor: Colors.green,
+                                        activeColor: const Color(0xFF045a4f),
                                         value: Chemistry,
                                         onChanged: (value) {
                                           setState(() {
@@ -355,7 +355,7 @@ class _MyProfileState extends State<MyProfile> {
                                   children: [
                                     Material(
                                       child: Checkbox(
-                                        activeColor: Colors.green,
+                                        activeColor: const Color(0xFF045a4f),
                                         value: Physics,
                                         onChanged: (value) {
                                           setState(() {
@@ -381,7 +381,7 @@ class _MyProfileState extends State<MyProfile> {
                                   children: [
                                     Material(
                                       child: Checkbox(
-                                        activeColor: Colors.green,
+                                        activeColor: const Color(0xFF045a4f),
                                         value: Maths,
                                         onChanged: (value) {
                                           setState(() {
@@ -403,7 +403,7 @@ class _MyProfileState extends State<MyProfile> {
                                   children: [
                                     Material(
                                       child: Checkbox(
-                                        activeColor: Colors.green,
+                                        activeColor: const Color(0xFF045a4f),
                                         value: Biology,
                                         onChanged: (value) {
                                           setState(() {
@@ -489,7 +489,7 @@ class _MyProfileState extends State<MyProfile> {
                             width: 400,
                             height: 50,
                             child: const Text(
-                              'Save',
+                              'SAVE',
                               style: TextStyle(
                                 fontSize: 18,
                                 color: Colors.white,

@@ -31,8 +31,8 @@ class _MyAnswersState extends State<MyAnswers> {
                   image: AssetImage('images/elevatelogo.png'),
                 ),
               ),
+               // ignore: sized_box_for_whitespace
                Container(
-          
                 width: 100.0,
                 child: const Icon(
                   Icons.menu,
@@ -54,7 +54,7 @@ class _MyAnswersState extends State<MyAnswers> {
                     width: 320,
                     height: 500,
                     child: Container(
-                      decoration: BoxDecoration(
+                      decoration:const BoxDecoration(
                           color: Color(0xff022924),
                           borderRadius: BorderRadius.only(
                             topRight: Radius.circular(60.0),
@@ -68,7 +68,7 @@ class _MyAnswersState extends State<MyAnswers> {
                     width: 320,
                     height: 500,
                     child: Container(
-                      decoration: BoxDecoration(
+                      decoration:const  BoxDecoration(
                           color: Color(0xff07433b),
                           borderRadius: BorderRadius.only(
                             topRight: Radius.circular(60.0),
@@ -82,7 +82,7 @@ class _MyAnswersState extends State<MyAnswers> {
                     width: 320,
                     height: 500,
                     child: Container(
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                           color: Color(0xff045a4f),
                           borderRadius: BorderRadius.only(
                             topRight: Radius.circular(60.0),
@@ -99,8 +99,8 @@ class _MyAnswersState extends State<MyAnswers> {
                             children: [
                               Center(
                                 child: Container(
-                                    margin: EdgeInsets.all(10),
-                                    child: Text(
+                                    margin:const EdgeInsets.all(10),
+                                    child: const Text(
                                       "ANSWER",
                                       style: TextStyle(
                                           fontSize: 22,
@@ -111,9 +111,9 @@ class _MyAnswersState extends State<MyAnswers> {
                             ],
                           ),
                           Container(
-                            margin: EdgeInsets.all(5),
-                            child: Padding(
-                              padding: const EdgeInsets.all(30.0),
+                            margin: const EdgeInsets.all(5),
+                            child: const Padding(
+                              padding: EdgeInsets.all(30.0),
                               child: Center(
                                 child: Text(
                                   "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, ",
@@ -123,7 +123,7 @@ class _MyAnswersState extends State<MyAnswers> {
                               ),
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 30,
                           ),
                           Row(
@@ -132,23 +132,23 @@ class _MyAnswersState extends State<MyAnswers> {
                             children: [
                               Center(
                                 child: Container(
-                                  margin: EdgeInsets.only(left: 10),
+                                  margin: const EdgeInsets.only(left: 10),
                                   height: 40,
                                   width: 270,
                                   decoration: BoxDecoration(
                                       color: Color(0xff6bdc58),
                                       borderRadius: BorderRadius.circular(20)),
                                   child: Row(
-                                    children: [
+                                    children: const [
                                       Padding(
                                         padding: const EdgeInsets.all(8.0),
                                         child: Icon(
-                                          Icons.fmd_good,
+                                          Icons.thumb_up,
                                           color: Colors.yellow,
                                         ),
                                       ),
                                       Text(
-                                        'PERFACT                               1 min',
+                                        'PERFECT                               1 min',
                                         style: TextStyle(
                                             fontSize: 15,
                                             fontWeight: FontWeight.bold,
@@ -160,7 +160,7 @@ class _MyAnswersState extends State<MyAnswers> {
                               )
                             ],
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 6,
                           ),
                           Center(
@@ -172,11 +172,11 @@ class _MyAnswersState extends State<MyAnswers> {
                                   color: Color(0xfffd6d6d),
                                   borderRadius: BorderRadius.circular(20)),
                               child: Row(
-                                children: [
+                                children: const [
                                   Padding(
                                     padding: const EdgeInsets.all(8.0),
                                     child: Icon(
-                                      Icons.fmd_good,
+                                      Icons.thumb_down,
                                       color: Colors.yellow,
                                     ),
                                   ),
@@ -203,11 +203,12 @@ class _MyAnswersState extends State<MyAnswers> {
                                   color: Color(0xfffac663),
                                   borderRadius: BorderRadius.circular(20)),
                               child: Row(
-                                children: [
+                                children: const [
                                   Padding(
                                     padding: const EdgeInsets.all(8.0),
                                     child: Icon(
-                                      Icons.fmd_good,
+                               
+                                      Icons.tag_faces_rounded,
                                       color: Colors.yellow,
                                     ),
                                   ),
@@ -238,8 +239,8 @@ class _MyAnswersState extends State<MyAnswers> {
                                   Padding(
                                     padding: const EdgeInsets.all(8.0),
                                     child: Icon(
-                                      Icons.fmd_good,
-                                      color: Colors.yellow,
+                                      Icons.repeat_on,
+                                      color: Colors.blue,
                                     ),
                                   ),
                                   Text(

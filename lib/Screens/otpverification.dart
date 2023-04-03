@@ -73,32 +73,32 @@ class _LoginScreenState extends State<OtpVerification> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
              SizedBox(height: 40,),
-                Row(
-                  children: const [
-                    SizedBox(
-                      width: 40.0,
-                    ),
-                    Text(
-                      'OTP VERIFICATION!',
-                      style: TextStyle(
-                        color: Colors.black,
-                              fontSize: 18.26,
-                        // fontStyle: FontStyle.italic,
-                        // fontFamily: 'Times New Roman',
-                        fontWeight: FontWeight.w500,
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 40),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children:  [
+                      
+                      Text(
+                        'OTP Verification',
+                        style: TextStyle(
+                          color: Colors.black,
+                                fontSize: 18.26,
+                          // fontStyle: FontStyle.italic,
+                          // fontFamily: 'Times New Roman',
+                          fontWeight: FontWeight.w500,
+                        ),
                       ),
-                    ),
-                    SizedBox(
-                      width: 130,
-                    ),
-                    Text(
-                      'Cancel',
-                      style: TextStyle(
-                        fontSize: 15,
-                        color: Color(0xFF045a4f),
-                      ),
-                    )
-                  ],
+                      
+                      Text(
+                        'Cancel',
+                        style: TextStyle(
+                          fontSize: 15,
+                          color: Color(0xFF045a4f),
+                        ),
+                      )
+                    ],
+                  ),
                 ),
                 SizedBox(
                   height: 20,
@@ -113,14 +113,14 @@ class _LoginScreenState extends State<OtpVerification> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'We just send you 4 digits code to your email',
+                          'We\'ve just sent you a 4-digit code to your email',
                           style: TextStyle(
                             color: Color(0xffA5AABB),
                           ),
                         ),
                         Text(
                           'example@example.com',
-                          style: TextStyle(fontWeight: FontWeight.bold),
+                          style: TextStyle(fontWeight: FontWeight.w500),
                         ),
                       ],
                     ),
@@ -138,7 +138,7 @@ class _LoginScreenState extends State<OtpVerification> {
                     children: [
                       // Note: Same code is applied for the TextFormField as well
                       Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
                           _textFieldOTP(first: true, last: false),
                           _textFieldOTP(first: false, last: false),
@@ -159,7 +159,7 @@ class _LoginScreenState extends State<OtpVerification> {
                           width: 500,
                           height: 50,
                           child: Text(
-                            'Continue',
+                            'CONTINUE',
                             style: TextStyle(
                               fontSize: 18,
                               color: Colors.white,
@@ -173,7 +173,7 @@ class _LoginScreenState extends State<OtpVerification> {
                       ),
                       Row(
                         children: [
-                          const Text('Don\'t have an account?'),
+                          const Text('Didn\'t received the code?'),
                           TextButton(
                             onPressed: (() {
                               Navigator.pushNamed(

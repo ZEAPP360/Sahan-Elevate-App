@@ -308,7 +308,7 @@ class _LoginScreenState extends State<SignUp> {
                                 children: [
                                   Material(
                                     child: Checkbox(
-                                      activeColor: Colors.green,
+                                      activeColor: const Color(0xFF045a4f),
                                       value: Chemistry,
                                       onChanged: (value) {
                                         setState(() {
@@ -330,7 +330,7 @@ class _LoginScreenState extends State<SignUp> {
                                 children: [
                                   Material(
                                     child: Checkbox(
-                                      activeColor: Colors.green,
+                                      activeColor: const Color(0xFF045a4f),
                                       value: Physics,
                                       onChanged: (value) {
                                         setState(() {
@@ -356,7 +356,7 @@ class _LoginScreenState extends State<SignUp> {
                                 children: [
                                   Material(
                                     child: Checkbox(
-                                      activeColor: Colors.green,
+                                      activeColor: const Color(0xFF045a4f),
                                       value: Maths,
                                       onChanged: (value) {
                                         setState(() {
@@ -378,7 +378,7 @@ class _LoginScreenState extends State<SignUp> {
                                 children: [
                                   Material(
                                     child: Checkbox(
-                                      activeColor: Colors.green,
+                                      activeColor: const Color(0xFF045a4f),
                                       value: Biology,
                                       onChanged: (value) {
                                         setState(() {
@@ -400,11 +400,12 @@ class _LoginScreenState extends State<SignUp> {
                       const SizedBox(
                         height: 10,
                       ),
+
                       Row(
                         children: [
                           Material(
                             child: Checkbox(
-                              activeColor: Colors.green,
+                              activeColor:  const Color(0xFF045a4f),
                               value: agree,
                               onChanged: (value) {
                                 setState(() {
@@ -413,11 +414,14 @@ class _LoginScreenState extends State<SignUp> {
                               },
                             ),
                           ),
-                          const Text(
-                            'I have read and accept terms and conditions',
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 15),
-                            overflow: TextOverflow.ellipsis,
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: const Text(
+                              'I HAVE READ, UNDERSTOOD, AND ACCEPTED\n THE PRIVACY POLICY',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w500, fontSize: 15),
+                              overflow: TextOverflow.ellipsis,
+                            ),
                           )
                         ],
                       ),
@@ -447,7 +451,7 @@ class _LoginScreenState extends State<SignUp> {
                       ),
                       Row(
                         children: [
-                          const Text('Don\'t have an account?'),
+                          const Text('You have an account?'),
                           TextButton(
                             onPressed: (() {
                               Navigator.pushNamed(

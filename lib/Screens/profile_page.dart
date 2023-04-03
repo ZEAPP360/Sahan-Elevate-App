@@ -404,7 +404,7 @@ class _Profile2State extends State<Profile2> {
                                     height: 8,
                                   ),
                                   Text(
-                                    'SELECT SUBJECT',
+                                    'SELECTED SUBJECT',
                                     style: TextStyle(
                                         color: Colors.white, fontSize: 12),
                                   ),
