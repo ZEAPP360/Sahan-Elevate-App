@@ -375,7 +375,7 @@ const snackBar = SnackBar(content: Text("Enter Correct Crendentials"));
                                   }
                                 },
                                   child: Container( alignment: Alignment.center, width: 400, height: 50, 
-                                  child:Text('Sign In', style: TextStyle( fontSize: 18, color: Colors.white, ),),
+                                  child:Text('SIGN IN', style: TextStyle( fontSize: 18, color: Colors.white, ),),
                                     decoration: BoxDecoration(
                                       color: const Color(0xFF045a4f),
                                       borderRadius: BorderRadius.circular(25),
