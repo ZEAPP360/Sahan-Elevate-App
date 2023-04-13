@@ -437,7 +437,7 @@ class _LoginScreenState extends State<SignUp> {
                           width: 400,
                           height: 50,
                           child: const Text(
-                            'SIGN UP',
+                            'Sign Up',
                             style: TextStyle(
                               fontSize: 18,
                               color: Colors.white,
@@ -460,7 +460,7 @@ class _LoginScreenState extends State<SignUp> {
                               );
                             }),
                             child: const Text(
-                              'SIGNIN',
+                              'Sign in',
                               style: TextStyle(
                                 color: Colors.black,
                                 fontSize: 15,

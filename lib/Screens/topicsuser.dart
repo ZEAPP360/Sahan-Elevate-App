@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:learnerapp/Screens/login_screen.dart';
 import 'package:learnerapp/Screens/edit_profile.dart';
+import 'package:learnerapp/Screens/questiion.dart';
 import 'package:learnerapp/Services/topicbyusermodel.dart';
 import '../Services/allsub_api.dart';
 import '../Services/module_by_sub.dart';
@@ -11,17 +12,18 @@ import 'profile_page.dart';
 // ignore: must_be_immutable
 class TopicByUser extends StatefulWidget {
   String? token2;
-
-  TopicByUser({this.token2, super.key});
+String ? id;
+  TopicByUser({this.token2, this.id, super.key});
 
   @override
   // ignore: no_logic_in_create_state
-  State<TopicByUser> createState() => _TopicByUserState(token2);
+  State<TopicByUser> createState() => _TopicByUserState(token2,id);
 }
 
 class _TopicByUserState extends State<TopicByUser> {
   String? token2;
-  _TopicByUserState(this.token2);
+  String ? id;
+   _TopicByUserState(this.token2,this.id);
   // ignore: annotate_overrides
   void initState() {
     super.initState();
@@ -30,10 +32,10 @@ class _TopicByUserState extends State<TopicByUser> {
 
   Future<TopicsBySubjects> getdata1() async {
     // ignore: unused_local_variable
-    var params = {"token": "$token2", "id": 1};
+    var params = {"token": "$token2", "id": id};
     var response2 = await http.get(
       Uri.parse(
-        'http://fca.systemiial.com/api/get-topics-by-module?token=$token2&id=1',
+        'http://fca.systemiial.com/api/get-topics-by-module?token=$token2&id=$id',
       ),
     );
     var client = http.Client();
@@ -351,11 +353,27 @@ class _TopicByUserState extends State<TopicByUser> {
                                             const SizedBox(
                                               width: 20,
                                             ),
-                                            const Text(
-                                              'View Sub Deck',
-                                              style: TextStyle(
-                                                  color: Colors.white),
-                                            )
+                                                InkWell(
+                                              onTap: () {
+                                                //ModuleByUser
+                                                Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                      builder: (context) =>
+                                                  ShowAnswer(
+
+                                                    token2: token2,
+                                                  )
+                                                          
+                                                          ),
+                                                );
+                                              },
+                                              child: Text(
+                                                'View  Quesstion',
+                                                style: TextStyle(
+                                                    color: Colors.white),
+                                              ),
+                                            ),
                                           ],
                                         ),
                                       )),

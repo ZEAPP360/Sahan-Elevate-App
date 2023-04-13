@@ -11,17 +11,18 @@ import 'profile_page.dart';
 // ignore: must_be_immutable
 class ModuleByUser extends StatefulWidget {
   String? token2;
-
-  ModuleByUser({this.token2, super.key});
+String ? id;
+  ModuleByUser({this.token2,this.id ,super.key});
 
   @override
   // ignore: no_logic_in_create_state
-  State<ModuleByUser> createState() => _ModuleByUserState(token2);
+  State<ModuleByUser> createState() => _ModuleByUserState(token2,id);
 }
 
 class _ModuleByUserState extends State<ModuleByUser> {
   String? token2;
-  _ModuleByUserState(this.token2);
+  String ? id;
+  _ModuleByUserState(this.token2,this.id);
   // ignore: annotate_overrides
   void initState() {
     super.initState();
@@ -30,10 +31,10 @@ class _ModuleByUserState extends State<ModuleByUser> {
 
   Future<ModuleBySubjects> getdata() async {
     // ignore: unused_local_variable
-    var params = {"token": "$token2", "id": 1};
+    var params = {"token": "$token2", "id": id};
     var response2 = await http.get(
       Uri.parse(
-        'http://fca.systemiial.com/api/get-modules-by-subject?token=$token2&id=1',
+        'http://fca.systemiial.com/api/get-modules-by-subject?token=$token2&id=$id',
       ),
     );
     var client = http.Client();
@@ -319,15 +320,7 @@ class _ModuleByUserState extends State<ModuleByUser> {
                                               width: 60,
                                               height: double.infinity,
                                             ),
-                                            //                   Container(
-                                            //                     child:   VerticalDivider(
-                                            //                     width: 5,
-                                            //   color: Colors.white,
-                                            // thickness: 1,
-
-                                            // ),
-                                            //                 )
-                                            // ,
+                                        
                                             const SizedBox(
                                               width: 30,
                                             ),
@@ -358,7 +351,7 @@ class _ModuleByUserState extends State<ModuleByUser> {
                                                   MaterialPageRoute(
                                                       builder: (context) =>
                                                           TopicByUser(
-                                                            token2: token2,
+                                                            token2: token2,id: id
                                                           )),
                                                 );
                                               },
@@ -373,82 +366,7 @@ class _ModuleByUserState extends State<ModuleByUser> {
                                       )),
                                 ],
                               );
-                              // Container(
-                              //                 height: 240,
-                              //                 width: 380,
-                              //                 // decoration: BoxDecoration(borderRadius: BorderRadius.circular(80)),
-                              //                 child: Card(
-                              //                   shape: const RoundedRectangleBorder(
-                              //   borderRadius: BorderRadius.only(
-                              // topLeft: Radius.circular(30),
-                              // bottomLeft: Radius.circular(30),
-                              // topRight: Radius.circular(30),
-                              //                   )
-                              //   //set border radius more than 50% of height and width to make circle
-                              //   ),
-                              //                   color: Color(0xff0b5e54),
-                              //                   margin: const EdgeInsets.all(20),
-                              //                   child: Row(
-                              // children: [
-                              //   Container(
-                              //     child: Padding(
-                              //       padding: EdgeInsets.symmetric(vertical: 40),
-                              //       child:RotatedBox(
-                              // quarterTurns: 3,
-                              // child:Center(
-                              //   child: Text("CHEMISTRY",style: TextStyle(
-                              //     color: Colors.white,
-                              //     fontSize: 20,fontWeight: FontWeight.bold),),
-                              // )
-                              // ),
-                              //     ),
-                              //     decoration: BoxDecoration(
-                              //         color: Colors.black,
-                              //         borderRadius: BorderRadius.only(
-                              //           topLeft: Radius.circular(30),
-                              //           bottomLeft: Radius.circular(30),
-                              //         )),
-                              //     width: 60,
-                              //     height: double.infinity,
-                              //   ),
-                              //   //                   Container(
-                              //   //                     child:   VerticalDivider(
-                              //   //                     width: 5,
-                              //   //   color: Colors.white,
-                              //   // thickness: 1,
-
-                              //   // ),
-                              //   //                 )
-                              //   // ,
-                              //   SizedBox(
-                              //     width: 30,
-                              //   ),
-                              //   Text(
-                              //     'Play Deck',
-                              //     style: TextStyle(color: Colors.white),
-                              //   ),
-
-                              //   SizedBox(
-                              //     width: 30,
-                              //   ),
-                              //   Padding(
-                              //     padding: const EdgeInsets.all(14.0),
-                              //     child: VerticalDivider(
-                              //       width: 5,
-                              //       color: Colors.white,
-                              //     ),
-                              //   ),
-                              //   SizedBox(
-                              //     width: 20,
-                              //   ),
-                              //   Text(
-                              //     'View Sub Deck',
-                              //     style: TextStyle(color: Colors.white),
-                              //   )
-                              // ],
-                              //                   ),
-                              //                 )
-                              //                 );
+                           
                             },
                           );
                         } else {

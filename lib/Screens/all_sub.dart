@@ -8,7 +8,7 @@ import '../Services/allsub_api.dart';
 import '../Services/home_api.dart';
 import 'login_screen.dart';
 import 'profile_page.dart';
-
+import 'module_subjects.dart';
 class MainHomePage extends StatefulWidget {
     String? allsubtoken;
 
@@ -21,6 +21,7 @@ class MainHomePage extends StatefulWidget {
 
 class _MainHomePageState extends State<MainHomePage> {
   String? allsubtoken;
+  String? studentid;
 _MainHomePageState(this.allsubtoken);
 
   void initState() {
@@ -38,8 +39,11 @@ _MainHomePageState(this.allsubtoken);
     var client = http.Client();
     // print(response2.body);
     var data = jsonDecode(response2.body.toString());
-
-      print("Homepage token recieved:   $allsubtoken");
+  //  print(data);
+  //  studentid =data["data"]["name"];
+  
+        // response2['data'][]
+      print("Homepage token recieved:   $allsubtoken"); 
       print("MainHomePage Response:     ${response2.body}");
     if (response2.statusCode == 200) {
       //  setState(() {
@@ -176,7 +180,7 @@ _MainHomePageState(this.allsubtoken);
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => MainHomePage2(token2: allsubtoken)),
+                            builder: (context) => MainHomePage2(token2: allsubtoken,)),
                       );
                     },
                     child: Container(
@@ -333,7 +337,7 @@ _MainHomePageState(this.allsubtoken);
                               child:RotatedBox(
                         quarterTurns: 3,
                         child:Center(
-                          child: Text(snapshot.data!.data![index].name!,style: TextStyle(
+                          child: Text(snapshot.data!.data![index].name.toString(),style: TextStyle(
                             color: Colors.white,
                             fontSize: 20,fontWeight: FontWeight.bold),),
                         )
@@ -378,10 +382,24 @@ _MainHomePageState(this.allsubtoken);
                           SizedBox(
                             width: 20,
                           ),
-                          Text(
-                            'View Sub Deck',
-                            style: TextStyle(color: Colors.white),
-                          )
+                                InkWell(
+                                              onTap: () {
+                                                //ModuleByUser
+                                                Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          ModuleByUser(
+                                                            token2: allsubtoken,id: snapshot.data!.data![index].id.toString()
+                                                          )),
+                                                );
+                                              },
+                                              child: Text(
+                                                'View Sub Deck',
+                                                style: TextStyle(
+                                                    color: Colors.white),
+                                              ),
+                                            ),
                         ],
                                           ),
                                         )

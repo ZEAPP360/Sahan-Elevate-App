@@ -1,9 +1,61 @@
-import 'package:flutter/material.dart';
+import 'dart:convert';
 
+import 'package:flutter/material.dart';
+import 'package:learnerapp/Screens/showanswer.dart';
+import 'package:learnerapp/Services/question_api.dart';
+import 'package:http/http.dart' as http;
 import '../Utilities/routes.dart';
 
-class ShowAnswer extends StatelessWidget {
-  const ShowAnswer({super.key});
+class ShowAnswer extends StatefulWidget {
+   String? token2;
+
+  ShowAnswer({this.token2, super.key});
+
+
+  @override
+  State<ShowAnswer> createState() => _ShowAnswerState(token2);
+}
+
+class _ShowAnswerState extends State<ShowAnswer> {
+ 
+   String? token2;
+
+_ShowAnswerState(this.token2);
+
+  void initState() {
+    super.initState();
+    getToken();
+  }
+
+    Future<QuestionModel> getToken() async {
+    var params = {
+    "token": "$token2",
+    "type": "subject",
+    "id": "1",
+    };
+    var response2 = await http.get(
+        Uri.parse(
+          'http://fca.systemiial.com/api/get-card?token=$token2&type=subject&id=1',),);
+    var client = http.Client();
+    // print(response2.body);
+    var data = jsonDecode(response2.body.toString());
+  
+ 
+  //  studentid =data["data"]["name"];
+  
+        // response2['data'][]
+      print("Question page token recieved:   $token2"); 
+      print("Question page Response:     ${response2.body}");
+    if (response2.statusCode == 200) {
+      //  setState(() {
+      //   Token3= data["access_token"];
+      // });
+      // print("This is my token:  $Token3");
+      return  QuestionModel.fromJson(data);
+    } else {
+      return  QuestionModel.fromJson(data);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -13,8 +65,7 @@ class ShowAnswer extends StatelessWidget {
 
         children: [
          Row(
-            children: [
-            
+            children: [ 
               const SizedBox(
                 width: 70,
               ),
@@ -124,10 +175,21 @@ class ShowAnswer extends StatelessWidget {
           ),
           //Button
            TextButton(
-                onPressed: (() { Navigator.pushNamed(
-                                context,
-                                MyRoutes.answer,
-                              );}),
+                onPressed: 
+                (){
+                  Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                      builder: (context) =>
+                                                  MyAnswers(
+
+                                                    AnsToken: token2,
+                                                  )
+                                                          
+                                                          ),
+                                                );
+                },
+                              
                 child: Container(
                   alignment: Alignment.center,
                   width: 350,

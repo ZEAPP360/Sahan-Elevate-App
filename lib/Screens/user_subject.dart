@@ -73,7 +73,7 @@ class _MainHomePage2State extends State<MainHomePage2> {
                 width: 200,
               ),
             ),
-            
+
             elevation: 0,
             backgroundColor: Colors.white,
             // actions: [
@@ -179,7 +179,8 @@ class _MainHomePage2State extends State<MainHomePage2> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => MainHomePage(allsubtoken: token2)),
+                            builder: (context) =>
+                                MainHomePage(allsubtoken: token2)),
                       );
                     },
                     child: Container(

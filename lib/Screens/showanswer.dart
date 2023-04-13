@@ -1,26 +1,60 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:learnerapp/Utilities/routes.dart';
+import 'package:http/http.dart' as http;
+import '../Services/answer_api.dart';
 
 class MyAnswers extends StatefulWidget {
-  const MyAnswers({super.key});
+  String? AnsToken;
+
+  MyAnswers({this.AnsToken, super.key});
 
   @override
-  State<MyAnswers> createState() => _MyAnswersState();
+  State<MyAnswers> createState() => _MyAnswersState(AnsToken);
 }
 
 class _MyAnswersState extends State<MyAnswers> {
+  String? AnsToken;
+  String? Repeat="0";
+  String? Good="3";
+  String? Easy="5";
+  String? Hard="1";
+
+  _MyAnswersState(this.AnsToken);
+
+  void initState() {
+    super.initState();
+    // getToken();
+  }
+
+  Future<AnswerModel> getToken(int? answer) async {
+    var params = {"token": "$AnsToken", "answer": answer, "card_id": "1"};
+    var response = await http.get(Uri.parse(
+        'http://fca.systemiial.com/api/send-answer?token=$AnsToken&card_id=1&answer=$answer'));
+    var client = http.Client();
+    var data = jsonDecode(response.body.toString());
+
+    print("Answer page token recieved:   $AnsToken");
+    print("Answer page Response:     ${response.body}");
+    print("This is my Answer: $answer");
+
+    if (response.statusCode == 200) {
+      return AnswerModel.fromJson(data);
+    } else {
+      return AnswerModel.fromJson(data);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-     
       body: Column(
-      //logo row
-       
+        //logo row
+
         children: [
- 
           Row(
             children: [
-            
               const SizedBox(
                 width: 70,
               ),
@@ -31,8 +65,8 @@ class _MyAnswersState extends State<MyAnswers> {
                   image: AssetImage('images/elevatelogo.png'),
                 ),
               ),
-               // ignore: sized_box_for_whitespace
-               Container(
+              // ignore: sized_box_for_whitespace
+              Container(
                 width: 100.0,
                 child: const Icon(
                   Icons.menu,
@@ -42,19 +76,18 @@ class _MyAnswersState extends State<MyAnswers> {
               ),
             ],
           ),
-    
-        //boxes
-      
+
+          //boxes
+
           Expanded(
             child: Stack(
               children: [
                 Positioned(
-                    
                     left: 30,
                     width: 320,
                     height: 500,
                     child: Container(
-                      decoration:const BoxDecoration(
+                      decoration: const BoxDecoration(
                           color: Color(0xff022924),
                           borderRadius: BorderRadius.only(
                             topRight: Radius.circular(60.0),
@@ -68,7 +101,7 @@ class _MyAnswersState extends State<MyAnswers> {
                     width: 320,
                     height: 500,
                     child: Container(
-                      decoration:const  BoxDecoration(
+                      decoration: const BoxDecoration(
                           color: Color(0xff07433b),
                           borderRadius: BorderRadius.only(
                             topRight: Radius.circular(60.0),
@@ -99,7 +132,7 @@ class _MyAnswersState extends State<MyAnswers> {
                             children: [
                               Center(
                                 child: Container(
-                                    margin:const EdgeInsets.all(10),
+                                    margin: const EdgeInsets.all(10),
                                     child: const Text(
                                       "ANSWER",
                                       style: TextStyle(
@@ -117,8 +150,8 @@ class _MyAnswersState extends State<MyAnswers> {
                               child: Center(
                                 child: Text(
                                   "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, ",
-                                  style:
-                                      TextStyle(color: Colors.white, fontSize: 15),
+                                  style: TextStyle(
+                                      color: Colors.white, fontSize: 15),
                                 ),
                               ),
                             ),
@@ -131,166 +164,197 @@ class _MyAnswersState extends State<MyAnswers> {
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               Center(
-                                child: Container(
-                                  margin: const EdgeInsets.only(left: 10),
-                                  height: 40,
-                                  width: 270,
-                                  decoration: BoxDecoration(
-                                      color: Color(0xff6bdc58),
-                                      borderRadius: BorderRadius.circular(20)),
-                                  child: Row(
-                                    children: const [
-                                      Padding(
-                                        padding: const EdgeInsets.all(8.0),
-                                        child: Icon(
-                                          Icons.thumb_up,
-                                          color: Colors.yellow,
+                                child: GestureDetector(
+                                  onTap: () {
+                                    getToken(1);
+                                    const snackBar = SnackBar(
+                                      content:
+                                          Text('Answer Recored Hard'),
+                                    );
+                                    ScaffoldMessenger.of(context)
+                                        .showSnackBar(snackBar);
+                                  },
+                                  child: Container(
+                                    margin: const EdgeInsets.only(left: 10),
+                                    height: 40,
+                                    width: 270,
+                                    decoration: BoxDecoration(
+                                        color: Color(0xff6bdc58),
+                                        borderRadius:
+                                            BorderRadius.circular(20)),
+                                    child: Row(
+                                      children: const [
+                                        Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: Icon(
+                                            Icons.thumb_up,
+                                            color: Colors.yellow,
+                                          ),
                                         ),
-                                      ),
-                                      Text(
-                                        'PERFECT                               1 min',
-                                        style: TextStyle(
-                                            fontSize: 15,
-                                            fontWeight: FontWeight.bold,
-                                            color: Colors.white),
-                                      )
-                                    ],
+                                        Text(
+                                          'Hard                               1 min',
+                                          style: TextStyle(
+                                              fontSize: 15,
+                                              fontWeight: FontWeight.bold,
+                                              color: Colors.white),
+                                        )
+                                      ],
+                                    ),
                                   ),
                                 ),
                               )
                             ],
                           ),
-                          const SizedBox(
-                            height: 6,
-                          ),
+                          const SizedBox(height: 15),
                           Center(
-                            child: Container(
-                              margin: EdgeInsets.only(left: 10),
-                              height: 40,
-                              width: 270,
-                              decoration: BoxDecoration(
-                                  color: Color(0xfffd6d6d),
-                                  borderRadius: BorderRadius.circular(20)),
-                              child: Row(
-                                children: const [
-                                  Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Icon(
-                                      Icons.thumb_down,
-                                      color: Colors.yellow,
+                            child: GestureDetector(
+                              onTap: () {
+                                getToken(5);
+                                                                const snackBar = SnackBar(content: Text('Answer Recored Easy'),
+                                );
+                                ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                              },
+                              child: Container(
+                                margin: EdgeInsets.only(left: 10),
+                                height: 40,
+                                width: 270,
+                                decoration: BoxDecoration(
+                                    color: Color(0xfffd6d6d),
+                                    borderRadius: BorderRadius.circular(20)),
+                                child: Row(
+                                  children: const [
+                                    Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Icon(
+                                        Icons.thumb_down,
+                                        color: Colors.yellow,
+                                      ),
                                     ),
-                                  ),
-                                  Text(
-                                    'POOR                                     1 min',
-                                    style: TextStyle(
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.white),
-                                  )
-                                ],
+                                    Text(
+                                      'Easy                                     1 min',
+                                      style: TextStyle(
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.white),
+                                    )
+                                  ],
+                                ),
                               ),
                             ),
                           ),
-                          SizedBox(
-                            height: 6,
-                          ),
+                          SizedBox(height: 15),
                           Center(
-                            child: Container(
-                              margin: EdgeInsets.only(left: 10),
-                              height: 40,
-                              width: 270,
-                              decoration: BoxDecoration(
-                                  color: Color(0xfffac663),
-                                  borderRadius: BorderRadius.circular(20)),
-                              child: Row(
-                                children: const [
-                                  Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Icon(
-                               
-                                      Icons.tag_faces_rounded,
-                                      color: Colors.yellow,
+                            child: GestureDetector(
+                              onTap: () {
+                                getToken(3);
+                                               const snackBar = SnackBar(content: Text('Answer Recored Good'),
+                                );
+                                ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                                ScaffoldMessenger.of(context)
+                                    .showSnackBar(snackBar);
+                              },
+                              child: Container(
+                                margin: EdgeInsets.only(left: 10),
+                                height: 40,
+                                width: 270,
+                                decoration: BoxDecoration(
+                                    color: Color(0xfffac663),
+                                    borderRadius: BorderRadius.circular(20)),
+                                child: Row(
+                                  children: const [
+                                    Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Icon(
+                                        Icons.tag_faces_rounded,
+                                        color: Colors.yellow,
+                                      ),
                                     ),
-                                  ),
-                                  Text(
-                                    'GOOD                                    1 min',
-                                    style: TextStyle(
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.white),
-                                  )
-                                ],
+                                    Text(
+                                      'GOOD                                    1 min',
+                                      style: TextStyle(
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.white),
+                                    )
+                                  ],
+                                ),
                               ),
                             ),
                           ),
-                          SizedBox(
-                            height: 6,
-                          ),
+                          SizedBox(height: 15),
                           Center(
-                            child: Container(
-                              margin: EdgeInsets.only(left: 10),
-                              height: 40,
-                              width: 270,
-                              decoration: BoxDecoration(
-                                  color: Color(0xff2ce4e2),
-                                  borderRadius: BorderRadius.circular(20)),
-                              child: Row(
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Icon(
-                                      Icons.repeat_on,
-                                      color: Colors.blue,
+                            child: GestureDetector(
+                              onTap: () {
+                                getToken(0);
+                                const snackBar = SnackBar(content: Text('Answer Recored Repeat'),
+                                );
+                                ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                                ScaffoldMessenger.of(context)
+                                    .showSnackBar(snackBar);
+                              },
+                              child: Container(
+                                margin: EdgeInsets.only(left: 10),
+                                height: 40,
+                                width: 270,
+                                decoration: BoxDecoration(
+                                    color: Color(0xff2ce4e2),
+                                    borderRadius: BorderRadius.circular(20)),
+                                child: Row(
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Icon(
+                                        Icons.repeat_on,
+                                        color: Colors.blue,
+                                      ),
                                     ),
-                                  ),
-                                  Text(
-                                    'REPEAT                                1 min',
-                                    style: TextStyle(
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.white),
-                                  )
-                                ],
+                                    Text(
+                                      'REPEAT                                1 min',
+                                      style: TextStyle(
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.white),
+                                    )
+                                  ],
+                                ),
                               ),
                             ),
                           ),
                         ],
                       ),
                     ))
-          
-                    
               ],
             ),
           ),
 
           //button
-          TextButton(
-                onPressed: (() {
+          // TextButton(
+          //       onPressed: (() {
 
-           Navigator.pushNamed(
-                        context,
-                        MyRoutes.question,
-                      );
+          //  Navigator.pushNamed(
+          //               context,
+          //               MyRoutes.question,
+          //             );
 
-                }),
-                child: Container(
-                  alignment: Alignment.center,
-                  width: 350,
-                  height: 50,
-                  child: const Text(
-                    'Show Answer',
-                    style: TextStyle(
-                      fontSize: 18,
-                      color: Colors.white,
-                    ),
-                  ),
-                  decoration: BoxDecoration(
-                    color: Colors.black,
-                    borderRadius: BorderRadius.circular(25),
-                  ),
-                ),
+          //       }),
+          //       child: Container(
+          //         alignment: Alignment.center,
+          //         width: 350,
+          //         height: 50,
+          //         child: const Text(
+          //           'Show Answer',
+          //           style: TextStyle(
+          //             fontSize: 18,
+          //             color: Colors.white,
+          //           ),
+          //         ),
+          //         decoration: BoxDecoration(
+          //           color: Colors.black,
+          //           borderRadius: BorderRadius.circular(25),
+          //         ),
+          //       ),
 
-              ),
+          //     ),
         ],
       ),
     );
