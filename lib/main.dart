@@ -11,7 +11,7 @@ import 'package:learnerapp/Screens/waitingpage.dart';
 import 'package:learnerapp/Utilities/routes.dart';
 
 void main() => runApp(const AuthApp());
-//test
+
 class AuthApp extends StatelessWidget {
   const AuthApp({Key? key}) : super(key: key);
   
