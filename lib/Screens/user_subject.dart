@@ -233,12 +233,14 @@ class _MainHomePage2State extends State<MainHomePage2> {
                                           ),
                                         );
                                       },
-                                      child: const Text("Yes")),
+                                      child: const Text("Yes",
+                                      style: TextStyle(color: Color(0xFF045a4f)))),
                                   TextButton(
                                       onPressed: () {
                                         Navigator.pop(context);
                                       },
-                                      child: const Text("No"))
+                                      child: const Text("No",
+                                      style: TextStyle(color: Color(0xFF045a4f))))
                                 ],
                               ));
                       // Navigator.push(
